@@ -34,6 +34,7 @@ public class CameraFollow : MonoBehaviour
             tempPos.x = maxX;
 
         transform.position = tempPos;
+        
 
     }
 
