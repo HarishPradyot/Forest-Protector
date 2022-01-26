@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Grid 2.5x2.5
+    uniqueID: 790772861
+    locked: 0
+  - name: Player
+    uniqueID: 2120495369
+    locked: 0
+  - name: Grid 1x1
+    uniqueID: 2615681863
+    locked: 0
