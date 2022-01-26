@@ -8,16 +8,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private int speed, direction;
     [SerializeField] 
-    private float angle;
+    private float angle, smoothInputMagnitude=0f, inputMagnitude=0f;
 
-    private Vector2 displacement;
+    private Vector2 inputDirection, velocity;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D playerBody;
     private Animator playerAnimator;
     private string WALK_PARAMETER;
 
     void Start()
     {
         spriteRenderer=GetComponent<SpriteRenderer>();
+        playerBody=GetComponent<Rigidbody2D>();
         playerAnimator=GetComponent<Animator>();
         WALK_PARAMETER="Direction";
     }
@@ -25,50 +27,63 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        inputDirection=new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        inputMagnitude = inputDirection.magnitude;
+        smoothInputMagnitude = Mathf.Lerp(smoothInputMagnitude, inputMagnitude, speed * Time.deltaTime);
+
+        velocity = inputDirection *  smoothInputMagnitude * speed;
+    }
+    void FixedUpdate()
+    {
         playerMovement();
-        playerAnimation();   
+    }
+    void LateUpdate()
+    {
+        playerAnimation();
     }
     void playerMovement()
     {
-        displacement=new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized*speed*Time.deltaTime;
-        transform.position=transform.position+(Vector3)displacement;
+        playerBody.MovePosition(playerBody.position + velocity * Time.deltaTime);
     }
     void playerAnimation()
     {
         
         direction=-1;
         /*
-        if(displacement.x == displacement.y)
+        if(inputDirection.x == inputDirection.y)
         {
             //For diagonal movement if required?
-            if(displacement.x > 0)
+            if(inputDirection.x > 0)
             {
-                if(displacement.y > 0)  //WD Direction
+                if(inputDirection.y > 0)  //WD Direction
                     direction=4;
                 else                    //SD Direction
                     direction=5;
             }
-            if(displacement.x < 0)
+            if(inputDirection.x < 0)
             {
-                if(displacement.y > 0)  //WA Direction
+                if(inputDirection.y > 0)  //WA Direction
                     direction=6;
                 else                    //SA Direction
                     direction=7;
             }
         }
-        else if(displacement.y > 0)  //W Direction
+        else if(inputDirection.y > 0)  //W Direction
             direction=0;
-        else if(displacement.y < 0)  //S Direction
+        else if(inputDirection.y < 0)  //S Direction
             direction=1;
-        else if(displacement.x > 0)  //D Direction
+        else if(inputDirection.x > 0)  //D Direction
             direction=2;
-        else if(displacement.x < 0)  //A Direction
+        else if(inputDirection.x < 0)  //A Direction
             direction=3;
         */
 
-        if(displacement.magnitude != 0)
+
+        if(inputDirection.magnitude == 0f)
+            smoothInputMagnitude=0f;
+        else
         {
-            angle=Mathf.Atan2(displacement.y, displacement.x);
+            angle=Mathf.Atan2(inputDirection.y, inputDirection.x);
             switch(angle)
             {
                 case Mathf.PI/2     :direction=0;break;
@@ -81,7 +96,6 @@ public class PlayerMovement : MonoBehaviour
                 case -3*Mathf.PI/4  :direction=7;break;
             }
         }
-
         playerAnimator.SetInteger(WALK_PARAMETER, direction);
     }
 }
