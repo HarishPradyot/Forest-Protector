@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    private Transform player;
+    private Transform playerTransform;
 
-    private Vector3 tempPos;
+    private Vector3 cameraPosition;
+    private float cameraDepth;
 
     [SerializeField]
     private float minX, maxX,minY,maxY;
@@ -14,41 +15,34 @@ public class CameraFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        playerTransform = GameObject.FindWithTag("Player").transform;
+        cameraDepth = transform.position.z;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-
-        if (!player)
+        if (!playerTransform)
             return;
 
-        tempPos = transform.position;
-        tempPos.x = player.position.x;
-        tempPos.y = player.position.y;
-
-        if (tempPos.x < minX)
-            tempPos.x = minX;
-
-        if (tempPos.x > maxX)
-            tempPos.x = maxX;
-
-
-        if (tempPos.y < minY)
-            tempPos.y = minY;
-
-        if (tempPos.y > maxY)
-            tempPos.y = maxY;
-
-        transform.position = tempPos;
+        cameraPosition = playerTransform.position;
+        cameraPosition.z = cameraDepth;
         
+        if (cameraPosition.x < minX)
+            cameraPosition.x = minX;
 
+        if (cameraPosition.x > maxX)
+            cameraPosition.x = maxX;
+
+        if (cameraPosition.y < minY)
+            cameraPosition.y = minY;
+
+        if (cameraPosition.y > maxY)
+            cameraPosition.y = maxY;
+
+        transform.position = cameraPosition;
     }
-
-
-
-} // class
+}
 
 
 
