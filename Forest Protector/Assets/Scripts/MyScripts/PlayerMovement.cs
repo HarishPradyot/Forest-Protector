@@ -7,9 +7,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private int speed, direction;
+    [SerializeField] 
+    private float angle;
 
-    [SerializeField]
-    private Sprite[] idleSprites;
     private Vector2 displacement;
     private SpriteRenderer spriteRenderer;
     private Animator playerAnimator;
@@ -35,8 +35,9 @@ public class PlayerMovement : MonoBehaviour
     }
     void playerAnimation()
     {
-        // int prevDirection=direction;
+        
         direction=-1;
+        /*
         if(displacement.x == displacement.y)
         {
             //For diagonal movement if required?
@@ -63,9 +64,24 @@ public class PlayerMovement : MonoBehaviour
             direction=2;
         else if(displacement.x < 0)  //A Direction
             direction=3;
+        */
+
+        if(displacement.magnitude != 0)
+        {
+            angle=Mathf.Atan2(displacement.y, displacement.x);
+            switch(angle)
+            {
+                case Mathf.PI/2     :direction=0;break;
+                case -Mathf.PI/2    :direction=1;break;
+                case 0              :direction=2;break;
+                case Mathf.PI       :direction=3;break;
+                case Mathf.PI/4     :direction=4;break;
+                case 3*Mathf.PI/4   :direction=5;break;
+                case -Mathf.PI/4    :direction=6;break;
+                case -3*Mathf.PI/4  :direction=7;break;
+            }
+        }
 
         playerAnimator.SetInteger(WALK_PARAMETER, direction);
-        // if(direction==-1 && prevDirection>=0 && prevDirection<=3)
-        //     spriteRenderer.sprite=idleSprites[prevDirection];
     }
 }
