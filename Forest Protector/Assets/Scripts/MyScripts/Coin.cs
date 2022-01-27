@@ -11,11 +11,12 @@ public class Coin : MonoBehaviour
     {
         
     }
-    IEnumerator destroyCoin(Material coin, float fadeSpeed)
+    IEnumerator destroyCoin()
     {
+        Material coin=gameObject.GetComponent<Renderer>().material;
         while(coin.color.a > 0.01f)
         {
-            coin.color = new Color(coin.color.r, coin.color.g, coin.color.b, coin.color.a-coin.color.a*fadeSpeed*Time.deltaTime);
+            coin.color = new Color(coin.color.r, coin.color.g, coin.color.b, coin.color.a-fadeSpeed*Time.deltaTime);
             yield return null;
         }
         Destroy(gameObject);
@@ -23,7 +24,6 @@ public class Coin : MonoBehaviour
     public void onCoinCollected()
     {
         Destroy(gameObject.GetComponent<BoxCollider2D>());
-        Material coin=gameObject.GetComponent<Renderer>().material;
-        StartCoroutine(destroyCoin(coin, fadeSpeed));
+        StartCoroutine(destroyCoin());
     }
 }

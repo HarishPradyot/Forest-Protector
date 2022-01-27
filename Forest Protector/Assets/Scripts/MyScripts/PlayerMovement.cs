@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     //Collectables and Weapons
     private int points, maxPoint=4; // coin points
+    [SerializeField]
+    private GameObject AirCutter;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         smoothInputMagnitude = Mathf.Lerp(smoothInputMagnitude, inputMagnitude, speed * Time.deltaTime);
 
         velocity = inputDirection *  smoothInputMagnitude * speed;
+        
     }
     void FixedUpdate()
     {
@@ -44,6 +47,15 @@ public class PlayerMovement : MonoBehaviour
     void LateUpdate()
     {
         playerAnimation();
+        airCutter();
+    }
+    void airCutter()
+    {
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            Instantiate(AirCutter, playerBody.position, Quaternion.Euler(0, 0, angle*Mathf.Rad2Deg));
+            Debug.Log(angle * Mathf.Rad2Deg);
+        }
     }
     void playerMovement()
     {
