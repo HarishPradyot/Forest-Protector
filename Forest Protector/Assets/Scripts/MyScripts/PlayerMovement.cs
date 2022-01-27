@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public int speed, direction;
+    //Position and Direction Parameters
+    [SerializeField]
+    private int speed;
+    private int direction;
+
+    //Position and Direction
     [SerializeField] 
     private float angle, smoothInputMagnitude=0f, inputMagnitude=0f;
-
     private Vector2 inputDirection, velocity;
+
+    //Properties
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D playerBody;
     private Animator playerAnimator;
@@ -19,6 +25,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private GameObject AirCutter;
 
+    public Vector2 Velocity
+    {
+        get
+        {
+            return velocity;
+        }
+    }
+    public Vector2 Position
+    {
+        get
+        {
+            return playerBody.position;
+        }
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.X))
         {
             Instantiate(AirCutter, playerBody.position, Quaternion.Euler(0, 0, angle*Mathf.Rad2Deg));
-            Debug.Log(angle * Mathf.Rad2Deg);
         }
     }
     void playerMovement()
