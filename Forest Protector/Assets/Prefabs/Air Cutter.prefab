@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e7770353bcf1945a62c17bcc31ae4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  range: 10
+  speed: 20
+  range: 40
   maxDamage: 10
   fadeSpeed: 0.5
 --- !u!61 &7868975317074196042

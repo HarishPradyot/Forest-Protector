@@ -6,7 +6,7 @@ public class AirCutter : MonoBehaviour
 {
     [SerializeField]
     //damage inflicted can be analogous to distance from source
-    private float speed=10f, range=10f, maxDamage=10f, fadeSpeed = 0.5f;
+    private float speed=20f, range=40f, maxDamage=20f, fadeSpeed = 0.5f;
 
     private Vector2 velocity, displacement;
     private float distance;
