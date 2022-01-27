@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D playerBody;
     private Animator playerAnimator;
-    private string WALK_PARAMETER, COIN;
+    private string WALK_PARAMETER, COIN, CHEST;
 
     //Collectables and Weapons
     private int points, maxPoint=4; // coin points
@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator=GetComponent<Animator>();
         WALK_PARAMETER="Direction";
         COIN="Coin";
+        CHEST="Chest";
     }
 
     // Update is called once per frame
@@ -68,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerAnimation();
         airCutter();
+        lineOfSight();
     }
     void airCutter()
     {
@@ -75,6 +77,17 @@ public class PlayerMovement : MonoBehaviour
         {
             Instantiate(AirCutter, playerBody.position, Quaternion.Euler(0, 0, angle*Mathf.Rad2Deg));
         }
+    }
+    void lineOfSight()
+    {
+        Ray2D los=new Ray2D(playerBody.position, inputDirection);
+        RaycastHit2D visibleObject=Physics2D.Raycast(playerBody.position, inputDirection, 1f);
+        if(visibleObject)
+            Debug.Log("Something There " + visibleObject.collider.gameObject.name);
+        if(visibleObject.collider.CompareTag(CHEST))
+            Debug.Log("Chest Nearby");
+        //RaycastHit2D visibleObject=Physics2D.Raycast(los.origin, los.direction, 1f);
+        Debug.DrawRay(los.origin, los.direction, Color.red);
     }
     void playerMovement()
     {

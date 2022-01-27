@@ -5,7 +5,7 @@ using UnityEngine;
 public class AirCutter : MonoBehaviour
 {
     [SerializeField]
-    //damage inflicted can be analogous to distance from source
+    // Damage inflicted can be analogous to distance from source
     private float speed=20f, range=40f, maxDamage=20f, fadeSpeed = 0.5f;
 
     private Vector2 velocity, displacement;
@@ -50,9 +50,5 @@ public class AirCutter : MonoBehaviour
     public int getDamage()
     {
         return (int)Mathf.Clamp(distance, 1f, maxDamage);
-    }
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        Debug.Log(col.tag);
     }
 }
