@@ -30,13 +30,28 @@ public class EnemySpawner : MonoBehaviour
             randomSide=Random.Range(0,4);
             spawnedEnemy = Instantiate(enemies[randomEnemy]);
             spawnedEnemy.transform.position = spawners[randomSpawner].position;
+            spawnedEnemy.GetComponent<EnemyMovement>().speed = Random.Range(4, 10);
             //left
-            if(randomSide==0)
-            {
-                 spawnedEnemy.GetComponent<Monster>().speed = -Random.Range(4, 10);
-                 spawnedMonster.transform.localScale = new Vector3(-1f, 1f, 1f);
-            }
-
+            // if(randomSide==0)
+            // {
+            //      spawnedEnemy.GetComponent<EnemyMovement>().speed = -Random.Range(4, 10);
+            //      spawnedEnemy.transform.localScale = new Vector3(-1f, 1f, 1f);
+            // }
+            // //right
+            // else if(randomSide==0)
+            // {
+               
+            // }
+            // //top
+            // else if(randomSide==0)
+            // {
+                
+            // }
+            // //bottom
+            // else
+            // {
+                
+            // }
         }
     }
     
