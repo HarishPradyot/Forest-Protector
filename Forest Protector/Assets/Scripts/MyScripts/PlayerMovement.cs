@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private int speed, direction;
+    public int speed, direction;
     [SerializeField] 
     private float angle, smoothInputMagnitude=0f, inputMagnitude=0f;
 
