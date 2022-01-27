@@ -7,7 +7,7 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     
     [SerializeField]
-    private float speed;
+    public float speed;
 
     private float movementX;
 
