@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField]
     private int speed, direction;
     [SerializeField] 
@@ -14,14 +13,21 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D playerBody;
     private Animator playerAnimator;
-    private string WALK_PARAMETER;
+    private string WALK_PARAMETER, COIN;
 
+    //Collectables and Weapons
+    private int points, maxPoint=4; // coin points
+    [SerializeField]
+    private GameObject AirCutter;
+
+    // Start is called before the first frame update
     void Start()
     {
         spriteRenderer=GetComponent<SpriteRenderer>();
         playerBody=GetComponent<Rigidbody2D>();
         playerAnimator=GetComponent<Animator>();
         WALK_PARAMETER="Direction";
+        COIN="Coin";
     }
 
     // Update is called once per frame
@@ -32,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         smoothInputMagnitude = Mathf.Lerp(smoothInputMagnitude, inputMagnitude, speed * Time.deltaTime);
 
         velocity = inputDirection *  smoothInputMagnitude * speed;
+        
     }
     void FixedUpdate()
     {
@@ -40,6 +47,15 @@ public class PlayerMovement : MonoBehaviour
     void LateUpdate()
     {
         playerAnimation();
+        airCutter();
+    }
+    void airCutter()
+    {
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            Instantiate(AirCutter, playerBody.position, Quaternion.Euler(0, 0, angle*Mathf.Rad2Deg));
+            Debug.Log(angle * Mathf.Rad2Deg);
+        }
     }
     void playerMovement()
     {
@@ -97,5 +113,13 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         playerAnimator.SetInteger(WALK_PARAMETER, direction);
+    }
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.CompareTag(COIN))
+        {
+            points+=Random.Range(1, maxPoint+1);
+            collider.GetComponent<Coin>().onCoinCollected();
+        }
     }
 }
