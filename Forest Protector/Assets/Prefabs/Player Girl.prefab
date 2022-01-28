@@ -121,7 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  direction: -1
   angle: 0
   smoothInputMagnitude: 0
   inputMagnitude: 0
