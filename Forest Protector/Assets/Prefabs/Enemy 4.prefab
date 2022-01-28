@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 1781711265290305278}
   - component: {fileID: 1895152537}
   - component: {fileID: 1895152538}
-  - component: {fileID: 219489032}
-  m_Layer: 0
+  - component: {fileID: 967154650649549317}
+  - component: {fileID: -8685380951401860573}
+  m_Layer: 6
   m_Name: Enemy 4
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,7 +137,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781711265290305277}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -155,7 +156,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.52}
   m_EdgeRadius: 0
---- !u!114 &219489032
+--- !u!70 &967154650649549317
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781711265290305277}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0021067858, y: 0.018961415}
+  m_Size: {x: 0.13836797, y: 0.43207717}
+  m_Direction: 0
+--- !u!114 &-8685380951401860573
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,11 +181,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1781711265290305277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98ee80bf9ce0a5949934d4651ca3208e, type: 3}
+  m_Script: {fileID: 11500000, guid: c146fce43ba02c34d9da76f44284971f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  angle: 0
-  smoothInputMagnitude: 0
-  inputMagnitude: 0
-  AirCutter: {fileID: 7868975317074196039, guid: b89170b6e6d29d2419d5725b59a75118, type: 3}
+  moveSpeed: 10
+  dir: {x: 0, y: 0, z: 0}
+  turnSpeed: 0
