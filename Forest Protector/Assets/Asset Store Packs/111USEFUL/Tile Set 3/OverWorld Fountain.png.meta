@@ -914,7 +914,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OverWorld Fountain_38
+      name: 1r1a
       rect:
         serializedVersion: 2
         x: 0
@@ -935,7 +935,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OverWorld Fountain_39
+      name: 1r1b
       rect:
         serializedVersion: 2
         x: 16
@@ -956,7 +956,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OverWorld Fountain_40
+      name: 1r1c
       rect:
         serializedVersion: 2
         x: 32
@@ -977,7 +977,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OverWorld Fountain_41
+      name: 1r1
       rect:
         serializedVersion: 2
         x: 48
@@ -1733,7 +1733,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OverWorld Fountain_77
+      name: 1r2a
       rect:
         serializedVersion: 2
         x: 0
@@ -1754,7 +1754,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OverWorld Fountain_78
+      name: 1r2b
       rect:
         serializedVersion: 2
         x: 16
@@ -1775,7 +1775,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OverWorld Fountain_79
+      name: 1r2c
       rect:
         serializedVersion: 2
         x: 32
@@ -1796,7 +1796,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OverWorld Fountain_80
+      name: 1r2d
       rect:
         serializedVersion: 2
         x: 48
@@ -13430,7 +13430,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OverWorld Fountain_634
+      name: 1ri1
       rect:
         serializedVersion: 2
         x: 144
@@ -13451,7 +13451,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OverWorld Fountain_635
+      name: 1le1
       rect:
         serializedVersion: 2
         x: 160
@@ -14186,7 +14186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OverWorld Fountain_670
+      name: 1sp3
       rect:
         serializedVersion: 2
         x: 112
@@ -14228,7 +14228,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OverWorld Fountain_672
+      name: 1ri2
       rect:
         serializedVersion: 2
         x: 144
@@ -14249,7 +14249,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OverWorld Fountain_673
+      name: 1le2
       rect:
         serializedVersion: 2
         x: 160
@@ -22719,7 +22719,6 @@ TextureImporter:
       OverWorld Fountain_813: -158697165
       OverWorld Fountain_221: -2107824540
       OverWorld Fountain_537: 1025177986
-      OverWorld Fountain_77: 1870548530
       OverWorld Fountain_669: -1760081984
       OverWorld Fountain_630: 1212815679
       OverWorld Fountain_448: -550516068
@@ -22743,10 +22742,10 @@ TextureImporter:
       OverWorld Fountain_323: 1976961068
       1f1-d: -743679643
       OverWorld Fountain_761: 1695557233
-      OverWorld Fountain_941: -672317266
       OverWorld Fountain_389: 1576786183
       OverWorld Fountain_225: 1665285224
       OverWorld Fountain_328: 932976807
+      OverWorld Fountain_941: -672317266
       OverWorld Fountain_726: -882367767
       OverWorld Fountain_489: -1102940889
       OverWorld Fountain_411: -354562928
@@ -22768,6 +22767,7 @@ TextureImporter:
       OverWorld Fountain_730: 713356103
       OverWorld Fountain_468: -2064029590
       OverWorld Fountain_843: -345170122
+      1le1: -873269739
       OverWorld Fountain_609: -161984054
       OverWorld Fountain_543: -1137221479
       OverWorld Fountain_775: -350075749
@@ -22906,9 +22906,10 @@ TextureImporter:
       OverWorld Fountain_226: 1523648677
       OverWorld Fountain_812: 1688550139
       OverWorld Fountain_379: 1575785188
+      1r2c: -1520495468
       OverWorld Fountain_458: -511424797
+      1r2b: -1132308215
       OverWorld Fountain_587: 244524212
-      OverWorld Fountain_670: -1420406138
       OverWorld Fountain_488: 833206237
       OverWorld Fountain_200: 117578799
       OverWorld Fountain_580: 69043719
@@ -22936,6 +22937,7 @@ TextureImporter:
       OverWorld Fountain_222: -2076279937
       OverWorld Fountain_243: 44021396
       OverWorld Fountain_770: 1229517107
+      1ri1: 197098137
       OverWorld Fountain_751: 392165292
       OverWorld Fountain_170: -169897833
       OverWorld Fountain_642: -872452623
@@ -22986,17 +22988,15 @@ TextureImporter:
       OverWorld Fountain_784: -913376380
       OverWorld Fountain_511: -1441312344
       OverWorld Fountain_135: -1042602325
-      OverWorld Fountain_303: 896384616
-      OverWorld Fountain_79: -1520495468
-      OverWorld Fountain_478: -736564337
       OverWorld Fountain_7: -2083136117
+      OverWorld Fountain_478: -736564337
+      OverWorld Fountain_303: 896384616
       OverWorld Fountain_689: 833775068
       OverWorld Fountain_380: 1381024884
       OverWorld Fountain_74: 252844715
       OverWorld Fountain_354: -86901886
-      OverWorld Fountain_673: 2019388431
-      OverWorld Fountain_398: -763767578
       OverWorld Fountain_988: 554061170
+      OverWorld Fountain_398: -763767578
       OverWorld Fountain_897: -1623595239
       OverWorld Fountain_1023: -589013594
       OverWorld Fountain_656: 414015040
@@ -23055,6 +23055,7 @@ TextureImporter:
       OverWorld Fountain_353: 1663612640
       OverWorld Fountain_905: -584720192
       OverWorld Fountain_959: -1087421640
+      1r1b: -313309884
       OverWorld Fountain_514: 587552366
       OverWorld Fountain_583: 1326671183
       OverWorld Fountain_966: 2028807907
@@ -23071,7 +23072,6 @@ TextureImporter:
       OverWorld Fountain_586: -957342190
       OverWorld Fountain_945: 808961937
       OverWorld Fountain_144: -51564762
-      OverWorld Fountain_41: 243651776
       OverWorld Fountain_1018: -2070742861
       OverWorld Fountain_311: 2133182879
       OverWorld Fountain_755: -1221665691
@@ -23152,6 +23152,7 @@ TextureImporter:
       OverWorld Fountain_112: 699599714
       OverWorld Fountain_501: -419365402
       OverWorld Fountain_529: 12121477
+      1r1: 243651776
       OverWorld Fountain_757: -298719144
       OverWorld Fountain_617: -1939293319
       OverWorld Fountain_210: 337993147
@@ -23161,7 +23162,6 @@ TextureImporter:
       OverWorld Fountain_774: -1215065471
       OverWorld Fountain_915: 818696179
       OverWorld Fountain_262: 1992900488
-      OverWorld Fountain_80: -2109769081
       OverWorld Fountain_884: 691922353
       OverWorld Fountain_100: 1131768536
       OverWorld Fountain_963: -2038099442
@@ -23183,6 +23183,7 @@ TextureImporter:
       OverWorld Fountain_924: 2109032480
       OverWorld Fountain_721: -311153976
       OverWorld Fountain_280: 398147745
+      1sp3: -1420406138
       OverWorld Fountain_275: -1497692506
       OverWorld Fountain_870: 2048887417
       OverWorld Fountain_201: -1958687119
@@ -23245,7 +23246,6 @@ TextureImporter:
       OverWorld Fountain_747: 258941242
       OverWorld Fountain_929: 1219431102
       OverWorld Fountain_258: -967615706
-      OverWorld Fountain_672: 15624808
       OverWorld Fountain_560: -1982188543
       OverWorld Fountain_914: 64951165
       OverWorld Fountain_153: 1837701073
@@ -23277,11 +23277,11 @@ TextureImporter:
       OverWorld Fountain_679: 1640980600
       OverWorld Fountain_176: -1219149163
       OverWorld Fountain_907: 925195659
-      1f2-c: 933496394
       1Wc1: -311689561
       OverWorld Fountain_896: -295841449
       OverWorld Fountain_383: 17973524
       1f2-i: -181758221
+      1f2-c: 933496394
       OverWorld Fountain_932: -2014743576
       OverWorld Fountain_90: 1450253459
       OverWorld Fountain_287: -734493248
@@ -23326,17 +23326,16 @@ TextureImporter:
       OverWorld Fountain_748: 767731203
       OverWorld Fountain_12: 770127996
       OverWorld Fountain_110: 22197151
+      11Fence3: -1186608335
       OverWorld Fountain_852: -880136365
-      OverWorld Fountain_38: 1225906859
+      OverWorld Fountain_500: 863916370
       1Wa2: 365505957
       OverWorld Fountain_492: 942271222
       OverWorld Fountain_920: 971567793
-      OverWorld Fountain_500: 863916370
       OverWorld Fountain_93: -113811594
       OverWorld Fountain_687: -1246775969
       OverWorld Fountain_329: 677432833
       OverWorld Fountain_706: -620388849
-      11Fence3: -1186608335
       OverWorld Fountain_606: 399160135
       OverWorld Fountain_477: 1265839337
       OverWorld Fountain_971: 1599868759
@@ -23404,6 +23403,7 @@ TextureImporter:
       OverWorld Fountain_348: 521649397
       OverWorld Fountain_930: 1432941443
       OverWorld Fountain_358: 1416322089
+      1r1a: 1225906859
       OverWorld Fountain_331: 1094705752
       OverWorld Fountain_507: -1835708747
       OverWorld Fountain_57: 1265740808
@@ -23418,7 +23418,6 @@ TextureImporter:
       OverWorld Fountain_20: -385383441
       OverWorld Fountain_71: 779940923
       OverWorld Fountain_682: -663299400
-      OverWorld Fountain_78: -1132308215
       11Fence2: 1217245463
       OverWorld Fountain_164: -1276237022
       OverWorld Fountain_1065: 213085491
@@ -23437,7 +23436,6 @@ TextureImporter:
       OverWorld Fountain_233: 1228460410
       OverWorld Fountain_940: 1402853167
       1f2-f: -1196521091
-      OverWorld Fountain_40: -195560684
       OverWorld Fountain_888: 807987745
       OverWorld Fountain_276: 826765519
       OverWorld Fountain_1025: -905949515
@@ -23481,6 +23479,7 @@ TextureImporter:
       OverWorld Fountain_338: 1982506054
       OverWorld Fountain_261: 1376552803
       OverWorld Fountain_621: 1935262484
+      1r1c: -195560684
       OverWorld Fountain_431: 1609635361
       OverWorld Fountain_16: 1856191033
       OverWorld Fountain_692: 525556389
@@ -23513,6 +23512,7 @@ TextureImporter:
       OverWorld Fountain_839: -2144899404
       OverWorld Fountain_322: -731352878
       OverWorld Fountain_502: 718659517
+      1le2: 2019388431
       OverWorld Fountain_1054: 1496535272
       OverWorld Fountain_525: -1430597462
       OverWorld Fountain_388: -1223151857
@@ -23582,9 +23582,8 @@ TextureImporter:
       OverWorld Fountain_1022: -842698757
       OverWorld Fountain_555: -1419213681
       OverWorld Fountain_151: 1851266102
-      OverWorld Fountain_634: 197098137
-      OverWorld Fountain_674: -52172182
       1f3-e: -1032570912
+      OverWorld Fountain_674: -52172182
       OverWorld Fountain_861: -1857468424
       OverWorld Fountain_688: -1800778274
       OverWorld Fountain_575: -610561075
@@ -23669,7 +23668,6 @@ TextureImporter:
       OverWorld Fountain_556: 496600049
       OverWorld Fountain_169: 1274119810
       OverWorld Fountain_15: 1484221433
-      OverWorld Fountain_635: -873269739
       OverWorld Fountain_746: -711376178
       OverWorld Fountain_862: -1632471982
       OverWorld Fountain_375: 731738619
@@ -23683,17 +23681,18 @@ TextureImporter:
       OverWorld Fountain_460: 1461670070
       OverWorld Fountain_857: 2095181880
       OverWorld Fountain_984: 1841162803
-      OverWorld Fountain_39: -313309884
       OverWorld Fountain_711: -1283895548
       OverWorld Fountain_612: -2082380921
       11Fence6: -292557874
       OverWorld Fountain_248: 1059115594
       OverWorld Fountain_254: -1587726851
       OverWorld Fountain_532: 1829930930
+      1ri2: 15624808
       OverWorld Fountain_245: -1949991743
       OverWorld Fountain_219: 739703940
       OverWorld Fountain_382: 1535840213
       OverWorld Fountain_509: 1451329613
+      1r2d: -2109769081
       OverWorld Fountain_479: 2042612910
       OverWorld Fountain_851: -495590992
       OverWorld Fountain_49: -921007315
@@ -23709,6 +23708,7 @@ TextureImporter:
       OverWorld Fountain_327: -946626514
       OverWorld Fountain_983: -1465395862
       1Wa1: 1667753033
+      1r2a: 1870548530
       OverWorld Fountain_491: 1611533073
       OverWorld Fountain_834: 1145429700
       OverWorld Fountain_557: -242943243
