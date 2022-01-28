@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1781711265290305278}
   - component: {fileID: 1895152537}
   - component: {fileID: 1895152538}
+  - component: {fileID: 4112095319606220201}
   - component: {fileID: 5641364444837841821}
   m_Layer: 6
   m_Name: Enemy 5
@@ -20,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1781711265290305279
 Transform:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781711265290305277}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -155,6 +156,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.21, y: 0.47}
   m_EdgeRadius: 0
+--- !u!70 &4112095319606220201
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781711265290305277}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0021067858, y: 0.018961415}
+  m_Size: {x: 0.13836797, y: 0.43207717}
+  m_Direction: 0
 --- !u!114 &5641364444837841821
 MonoBehaviour:
   m_ObjectHideFlags: 0
