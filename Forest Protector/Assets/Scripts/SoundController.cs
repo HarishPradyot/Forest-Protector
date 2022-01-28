@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SoundController : MonoBehaviour
 {
-    //Menu Audio Source
+    // Menu Audio Source
     [SerializeField]
     private AudioSource AudioSource;
     
