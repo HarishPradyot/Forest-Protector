@@ -45,6 +45,7 @@ public class AirCutter : MonoBehaviour
             airCutter.color=new Color(airCutter.color.r, airCutter.color.g, airCutter.color.b, airCutter.color.a-fadeSpeed*Time.deltaTime);
             yield return null;
         }
+        FindObjectOfType<PlayerMovement>().restoreWeaponCount(gameObject.tag);
         Destroy(gameObject);
     }
     public int getDamage()

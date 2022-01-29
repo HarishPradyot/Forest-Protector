@@ -8,6 +8,7 @@ TagManager:
   - Chest
   - Air Cutter
   - Enemy
+  - Boomerang
   layers:
   - Default
   - TransparentFX

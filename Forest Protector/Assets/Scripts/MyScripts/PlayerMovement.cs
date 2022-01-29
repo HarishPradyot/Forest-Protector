@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private float minAccessRange=1.5f;  // Min distance between player and Collactables so that they are accessible (Example. Chests)
     [SerializeField]
     private float longPressDuration=4f;  // Time for which key must be pressed down to open Collactables (Example. Chests)
+    [SerializeField]
+    private Dictionary<string, int> Weapon_to_Index;
     
     // Position and Direction Parameters
     [SerializeField]
@@ -33,7 +35,10 @@ public class PlayerMovement : MonoBehaviour
     // Collectables and Weapons
     private int points, maxPoint=4; // Coin Points
     [SerializeField]
-    private GameObject AirCutter;
+    private GameObject[] Weapons;
+    [SerializeField]
+    private int[] weaponMaxCount;
+    private int weaponIndex=1;
 
     public Vector2 Velocity
     {
@@ -65,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         offset_w_s=playerCollider.size.y*transform.localScale.y/2;
         offset_diagonal=Mathf.Sqrt(offset_a_d*offset_a_d + offset_w_s*offset_w_s);
         Physics2D.queriesStartInColliders=false;
+        initializeWeaponIndexMap();
     }
 
     // Update is called once per frame
@@ -75,7 +81,13 @@ public class PlayerMovement : MonoBehaviour
         smoothInputMagnitude = Mathf.Lerp(smoothInputMagnitude, inputMagnitude, speed * Time.deltaTime);
 
         velocity = inputDirection *  smoothInputMagnitude * speed;
-        
+    }
+    void initializeWeaponIndexMap()
+    {
+        Weapon_to_Index=new Dictionary<string, int>();
+        int index=0;
+        foreach(GameObject weapon in Weapons)
+            Weapon_to_Index.Add(weapon.tag, index++);
     }
     void FixedUpdate()
     {
@@ -84,14 +96,17 @@ public class PlayerMovement : MonoBehaviour
     void LateUpdate()
     {
         playerAnimation();
-        airCutter();
+        launchWeapon();
+        StartCoroutine(changeWeapon());
         lineOfSight();
     }
-    void airCutter()
+    void launchWeapon()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        if(Input.GetKeyDown(KeyCode.X) && weaponMaxCount[weaponIndex]>0)
         {
-            Instantiate(AirCutter, playerBody.position, Quaternion.Euler(0, 0, angle*Mathf.Rad2Deg));
+            GameObject weapon=Instantiate(Weapons[weaponIndex], playerBody.position, Quaternion.Euler(0, 0, angle*Mathf.Rad2Deg));
+            weapon.transform.SetParent(transform);
+            weaponMaxCount[weaponIndex]--;
         }
     }
     void lineOfSight()
@@ -144,6 +159,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
+        Debug.Log(collider.gameObject.name);
         if(collider.CompareTag(COIN_TAG))
         {
             points+=Random.Range(1, maxPoint+1);
@@ -163,5 +179,25 @@ public class PlayerMovement : MonoBehaviour
             else
                 Debug.Log("Press Longer");
         }
+    }
+    IEnumerator changeWeapon()
+    {
+        float startTime=-1f;
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            startTime=Time.time;
+            while(Time.time-startTime<=longPressDuration && Input.GetKey(KeyCode.Q))
+                yield return null;
+            if(Time.time-startTime>=longPressDuration)
+            {
+                weaponIndex=(weaponIndex+1)%Weapons.Length;
+            }
+            else
+                Debug.Log("Press Longer");
+        }
+    }
+    public void restoreWeaponCount(string weaponName)
+    {
+        weaponMaxCount[Weapon_to_Index[weaponName]]++;
     }
 }
