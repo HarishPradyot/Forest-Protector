@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+     public int maxHealth=100;
+     public int currentHealth;
+     public HealthBar healthBar;
     // Global Game Varibles
     [SerializeField]
     private float minAccessRange=1.5f;  // Min distance between player and Collactables so that they are accessible (Example. Chests)
@@ -58,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth=maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         spriteRenderer=GetComponent<SpriteRenderer>();
         playerBody=GetComponent<Rigidbody2D>();
         playerAnimator=GetComponent<Animator>();
@@ -199,5 +204,10 @@ public class PlayerMovement : MonoBehaviour
     public void restoreWeaponCount(string weaponName)
     {
         weaponMaxCount[Weapon_to_Index[weaponName]]++;
+    }
+    public void TakeDamage(int damage)
+    {
+        currentHealth-=damage;
+        healthBar.SetHealth(currentHealth);
     }
 }
