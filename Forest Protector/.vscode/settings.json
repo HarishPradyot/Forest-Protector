@@ -54,5 +54,6 @@
         "Temp/":true
     },
     "omnisharp.useGlobalMono": "always",
-    "debug.allowBreakpointsEverywhere": true
+    "debug.allowBreakpointsEverywhere": true,
+    "files.autoGuessEncoding": true
 }
