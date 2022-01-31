@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7868975317074196041}
   - component: {fileID: 7868975317074196038}
   - component: {fileID: 7868975317074196043}
-  - component: {fileID: 7868975317074196042}
+  - component: {fileID: 4281804796381595488}
   m_Layer: 0
   m_Name: Air Cutter
   m_TagString: Air Cutter
@@ -123,8 +123,8 @@ MonoBehaviour:
   range: 40
   maxDamage: 10
   fadeSpeed: 0.5
---- !u!61 &7868975317074196042
-BoxCollider2D:
+--- !u!70 &4281804796381595488
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -136,16 +136,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.12, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.57, y: 0.86}
-    newSize: {x: 0.57, y: 0.86}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.4}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.15, y: 0}
+  m_Size: {x: 0.3, y: 1.2}
+  m_Direction: 0

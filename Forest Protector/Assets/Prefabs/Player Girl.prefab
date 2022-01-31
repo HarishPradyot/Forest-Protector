@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2120495369
-  m_SortingLayer: -3
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -1484687595, guid: b61e999dbc77605409ec03ec68e85ac4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -120,11 +120,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee80bf9ce0a5949934d4651ca3208e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minAccessRange: 1.5
+  longPressDuration: 4
   speed: 10
   angle: 0
   smoothInputMagnitude: 0
   inputMagnitude: 0
-  AirCutter: {fileID: 7868975317074196039, guid: b89170b6e6d29d2419d5725b59a75118, type: 3}
+  Weapons:
+  - {fileID: 7868975317074196039, guid: b89170b6e6d29d2419d5725b59a75118, type: 3}
+  - {fileID: 4063055854226802343, guid: 8b0e935663581be488a2b8751d205462, type: 3}
+  weaponMaxCount: 0200000001000000
 --- !u!50 &1895152537
 Rigidbody2D:
   serializedVersion: 4
