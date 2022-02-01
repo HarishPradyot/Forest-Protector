@@ -181,6 +181,7 @@ public class PlayerMovement : MonoBehaviour
                 yield return null;
             if(Time.time-startTime>=longPressDuration)
                 Chest.GetComponent<Chest>().openChest();
+                // Add Collision Check with Trap Layer
             else
                 Debug.Log("Press Longer");
         }
