@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -2176,8 +2176,8 @@ TextureImporter:
       jcNq8LD_86: 523047254
       jcNq8LD_12: -1006102707
       jcNq8LD_38: -1807623096
-      jcNq8LD_57: 52113430
       jcNq8LD_59: 657983336
+      jcNq8LD_57: 52113430
       jcNq8LD_73: -999663101
       jcNq8LD_76: 685220760
       jcNq8LD_5: 722745165
@@ -2195,10 +2195,10 @@ TextureImporter:
       jcNq8LD_24: 1465637281
       jcNq8LD_94: 307175200
       jcNq8LD_3: 1627642835
-      jcNq8LD_26: -1339207784
-      jcNq8LD_8: 1581891932
       jcNq8LD_62: 327154790
+      jcNq8LD_8: 1581891932
       jcNq8LD_33: -1839439524
+      jcNq8LD_26: -1339207784
       jcNq8LD_40: 1741165213
       jcNq8LD_81: 1166987532
       jcNq8LD_91: -1097936518
