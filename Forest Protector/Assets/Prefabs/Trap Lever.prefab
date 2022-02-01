@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6410012673411080730}
   - component: {fileID: 6410012673411080727}
   - component: {fileID: 3407258247138534007}
+  - component: {fileID: -3459643624266483068}
   m_Layer: 0
   m_Name: Trap Lever
   m_TagString: Chest
@@ -147,3 +148,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeSpeed: 1
   waitDuration: 4
+--- !u!114 &-3459643624266483068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6410012673411080731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5a2b4bb39d9b74ba99ef826dcfdb67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeSpeed: 0.5
