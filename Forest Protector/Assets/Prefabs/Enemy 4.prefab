@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1781711265290305278}
   - component: {fileID: 1895152537}
   - component: {fileID: 1895152538}
-  - component: {fileID: 967154650649549317}
-  - component: {fileID: -8685380951401860573}
+  - component: {fileID: 1467426184000328171}
+  - component: {fileID: 1722342271415279339}
   m_Layer: 6
   m_Name: Enemy 4
   m_TagString: Enemy
@@ -137,7 +137,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781711265290305277}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -156,23 +156,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.52}
   m_EdgeRadius: 0
---- !u!70 &967154650649549317
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781711265290305277}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0021067858, y: 0.018961415}
-  m_Size: {x: 0.13836797, y: 0.43207717}
-  m_Direction: 0
---- !u!114 &-8685380951401860573
+--- !u!114 &1467426184000328171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,9 +165,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 1781711265290305277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c146fce43ba02c34d9da76f44284971f, type: 3}
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  dir: {x: 0, y: 0, z: 0}
-  turnSpeed: 0
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &1722342271415279339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781711265290305277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172bb208ccd765f4e9152165ae6f2380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  nextWaypointDistance: 3
+  target: {fileID: 0}

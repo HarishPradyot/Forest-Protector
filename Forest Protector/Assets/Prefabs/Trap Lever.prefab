@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6410012673411080730}
   - component: {fileID: 6410012673411080727}
   - component: {fileID: 3407258247138534007}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trap Lever
   m_TagString: Chest
   m_Icon: {fileID: 0}
