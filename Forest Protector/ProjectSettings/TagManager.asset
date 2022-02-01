@@ -9,6 +9,7 @@ TagManager:
   - Air Cutter
   - Enemy
   - Boomerang
+  - NPC
   layers:
   - Default
   - TransparentFX
