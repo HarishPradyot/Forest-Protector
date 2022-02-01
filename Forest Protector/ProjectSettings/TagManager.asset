@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Boomerang
   - NPC
+  - Garbage
   layers:
   - Default
   - TransparentFX
