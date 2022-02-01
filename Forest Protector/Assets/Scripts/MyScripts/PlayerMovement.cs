@@ -170,6 +170,9 @@ public class PlayerMovement : MonoBehaviour
             points+=Random.Range(1, maxPoint+1);
             collider.GetComponent<Coin>().onCoinCollected();
         }
+        if(collider.CompareTag("Garbage")){
+            collider.GetComponent<GarbageAnimation>().destroy();
+        }
     }
     IEnumerator canOpenChest(Collider2D Chest)
     {
