@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -3459643624266483068}
   m_Layer: 0
   m_Name: Trap Lever
-  m_TagString: Chest
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

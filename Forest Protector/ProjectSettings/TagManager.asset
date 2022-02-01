@@ -11,6 +11,8 @@ TagManager:
   - Boomerang
   - NPC
   - Garbage
+  - Trap
+  - garbageNPC
   layers:
   - Default
   - TransparentFX
