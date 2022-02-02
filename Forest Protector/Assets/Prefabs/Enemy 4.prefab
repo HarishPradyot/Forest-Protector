@@ -170,10 +170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172bb208ccd765f4e9152165ae6f2380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  nextWaypointDistance: 3
-  angle: 0
+  pathUpdateSeconds: 0.5
   target: {fileID: 0}
+  speed: 12
+  nextWaypointDistance: 2
+  angle: 0
+  isFollowing: 0
 --- !u!58 &138464294
 CircleCollider2D:
   m_ObjectHideFlags: 0
