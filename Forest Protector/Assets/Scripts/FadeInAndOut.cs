@@ -29,6 +29,11 @@ public class FadeInAndOut : MonoBehaviour
             
             chest.ChestSpawner.GetComponent<ChestSpawner>().resetSpawner(chest.spawnLocation);
         }
+        if(gameObject.CompareTag("Trap")){
+            TrapLever trap= gameObject.GetComponent<TrapLever>();
+            
+            trap.TrapSpawner.GetComponent<TrapSpawner>().resetSpawner(trap.spawnLocation);
+        }
         Destroy(gameObject);
     }
     IEnumerator awakeGarbage()

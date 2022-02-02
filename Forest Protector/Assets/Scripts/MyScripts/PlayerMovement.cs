@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Additional Attributes
     private float offset_a_d, offset_w_s, offset_diagonal;  // Offset values for raycast so that the ray originates outside player collider for horizontal, vertical and diagonal motion
-    private string WALK_PARAMETER, COIN_TAG, CHEST_TAG, BOOMERANG_TAG;
+    private string WALK_PARAMETER, COIN_TAG, CHEST_TAG, BOOMERANG_TAG, TRAP_TAG;
 
     // Collectables and Weapons
     private int points, maxPoint=4; // Coin Points
@@ -76,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         COIN_TAG="Coin";
         CHEST_TAG="Chest";
         BOOMERANG_TAG="Boomerang";
+        TRAP_TAG="Trap";
 
         offset_a_d=playerCollider.size.x*transform.localScale.x/2;
         offset_w_s=playerCollider.size.y*transform.localScale.y/2;
@@ -153,6 +154,9 @@ public class PlayerMovement : MonoBehaviour
             Debug.DrawLine(origin, visibleObject.point, Color.red);
             if(visibleObject.collider.CompareTag(CHEST_TAG))
                 StartCoroutine(canOpenChest(visibleObject.collider));
+
+            if(visibleObject.collider.CompareTag(TRAP_TAG))
+                StartCoroutine(canOpenTrap(visibleObject.collider));
         }
         else
             Debug.DrawLine(origin, origin+direction*minAccessRange, Color.green);
@@ -205,6 +209,21 @@ public class PlayerMovement : MonoBehaviour
                 yield return null;
             if(Time.time-startTime>=longPressDuration)
                 Chest.GetComponent<Chest>().openChest();
+                // Add Collision Check with Trap Layer
+            else
+                Debug.Log("Press Longer");
+        }
+    }
+    IEnumerator canOpenTrap(Collider2D Chest)
+    {
+        float startTime=-1f;
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            startTime=Time.time;
+            while(Time.time-startTime<=longPressDuration && Input.GetKey(KeyCode.Z))
+                yield return null;
+            if(Time.time-startTime>=longPressDuration)
+                Chest.GetComponent<TrapLever>().openTrap();
                 // Add Collision Check with Trap Layer
             else
                 Debug.Log("Press Longer");
