@@ -12,6 +12,7 @@ public class Boomerang : MonoBehaviour
     private Vector3 angularDisplacement;
     private float distance;
     private bool canInflictDamage;
+    private Transform returnTransform;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,25 +38,32 @@ public class Boomerang : MonoBehaviour
         displacement=velocity*Time.deltaTime;
         distance+=displacement.magnitude;
         if(distance>range)
+        {
             canInflictDamage=false;
+            transform.SetParent(returnTransform);
+        }
     }
     void returnMotion()
     {
-        velocity=(Vector2)(transform.parent.position-transform.position).normalized*speed;
-        displacement=velocity*Time.deltaTime;
-    }
-    void LateUpdate()
-    {
-        transform.position = (Vector2)transform.position+displacement;
-        if((transform.localPosition-Vector3.zero).magnitude < 0.01f)
+        if((transform.position-returnTransform.position).magnitude < 0.01f)
         {
             FindObjectOfType<PlayerMovement>().restoreWeaponCount(gameObject.tag);
             Destroy(gameObject);
         }
+        velocity=(Vector2)(returnTransform.position-transform.position).normalized*speed;
+        displacement=velocity*Time.deltaTime;
+    }
+    void LateUpdate()
+    {
+        transform.position=(Vector2)transform.position+displacement;
         transform.Rotate(angularDisplacement);
     }
     public int getDamage()
     {
         return (int)Mathf.Clamp(distance, 1f, maxDamage);
+    }
+    public void setReturnTransform(Transform returnTransform)
+    {
+        this.returnTransform=returnTransform;
     }
 }
