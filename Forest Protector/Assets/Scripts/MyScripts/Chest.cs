@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Chest : MonoBehaviour
 {
+
+    public int spawnLocation;
+
+    [SerializeField]
+    public GameObject ChestSpawner;
+
     [SerializeField]
     private float waitDuration=4f;  // Time for which chest should remain opened before closing again
     private Animator chestAnimator;
@@ -15,11 +21,6 @@ public class Chest : MonoBehaviour
         CLOSE_CHEST="Base Layer.Chest Close";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void openChest()
     {
         Debug.Log("Long Presss Working");
@@ -32,5 +33,8 @@ public class Chest : MonoBehaviour
         while(Time.time-startTime<=waitDuration)
             yield return null;
         chestAnimator.Play(CLOSE_CHEST);
+        
+        gameObject.GetComponent<FadeInAndOut>().destroy();
+        
     }
 }

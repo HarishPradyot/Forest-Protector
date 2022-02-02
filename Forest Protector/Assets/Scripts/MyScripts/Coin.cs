@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+
+    public int spawnLocation;
+
+    [SerializeField]
+    public GameObject CoinSpawner;
+    
+
     // Start is called before the first frame update
     [SerializeField]
     private float fadeSpeed = 1f;
@@ -19,6 +26,7 @@ public class Coin : MonoBehaviour
             coin.color = new Color(coin.color.r, coin.color.g, coin.color.b, coin.color.a-fadeSpeed*Time.deltaTime);
             yield return null;
         }
+        CoinSpawner.GetComponent<CoinSpawner>().resetSpawner(spawnLocation);
         Destroy(gameObject);
     }
     public void onCoinCollected()

@@ -36,6 +36,7 @@ public class EnemySpawner : MonoBehaviour
                 spawnedEnemy = Instantiate(enemies[randomEnemy]);
                 Debug.Log("Enemy Spawned " + Time.time);
                 spawnedEnemy.transform.position = spawners[randomSpawner].position;
+                spawnerBool[randomSpawner] = true;
             }
             // spawnedEnemy.GetComponent<PlayerMovement>().speed = Random.Range(4, 10);
             
