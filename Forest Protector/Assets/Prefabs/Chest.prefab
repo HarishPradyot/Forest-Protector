@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6410012673411080730}
   - component: {fileID: 6410012673411080727}
   - component: {fileID: 6674784292515082049}
+  - component: {fileID: 7190162391678804556}
   m_Layer: 6
   m_Name: Chest
   m_TagString: Chest
@@ -145,4 +146,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecd95f66b897ca45ac1865b00c6ae02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitDuration: 4
+  spawnLocation: 0
+  ChestSpawner: {fileID: 0}
+  waitDuration: 1
+--- !u!114 &7190162391678804556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6410012673411080731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5a2b4bb39d9b74ba99ef826dcfdb67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeSpeed: 0.5

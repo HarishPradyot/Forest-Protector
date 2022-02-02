@@ -23,6 +23,12 @@ public class FadeInAndOut : MonoBehaviour
             specialObject.color = new Color(specialObject.color.r, specialObject.color.g, specialObject.color.b, specialObject.color.a-fadeSpeed*Time.deltaTime);
             yield return null;
         }
+
+        if(gameObject.CompareTag("Chest")){
+            Chest chest = gameObject.GetComponent<Chest>();
+            
+            chest.ChestSpawner.GetComponent<ChestSpawner>().resetSpawner(chest.spawnLocation);
+        }
         Destroy(gameObject);
     }
     IEnumerator awakeGarbage()

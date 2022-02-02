@@ -7,22 +7,32 @@ public class GarbageSpawner : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject[] sprites;
 
+    private GameObject spawn;
+
+    private bool spawned; 
+
     void Start()
     {
+        spawned = false;
         StartCoroutine("GarbageGenerator");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     IEnumerator GarbageGenerator(){
         while(true){
-            float x = Random.Range(0,5);
+            float x = Random.Range(3,7);
             yield return(new WaitForSeconds(x));
-            int y = Random.Range(0,sprites.Length);
-            Instantiate(sprites[y], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+            if(spawn==null){
+                Debug.Log("Was Destroyed");
+                spawned = false;
+            }
+            if(!spawned){
+                spawned = true;
+                yield return(new WaitForSeconds(x));
+                int y = Random.Range(0,sprites.Length);
+                spawn = Instantiate(sprites[y], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+                // 
+                // spawn.gameObject
+            }
             
         }
     }
