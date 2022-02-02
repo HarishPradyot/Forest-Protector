@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private float longPressDuration=4f;  // Time for which key must be pressed down to open Collactables (Example. Chests)
     [SerializeField]
     private Dictionary<string, int> Weapon_to_Index;
+    private GameManager gameManager;
     
     // Position and Direction Parameters
     [SerializeField]
@@ -33,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Additional Attributes
     private float offset_a_d, offset_w_s, offset_diagonal;  // Offset values for raycast so that the ray originates outside player collider for horizontal, vertical and diagonal motion
-    private string WALK_PARAMETER, COIN_TAG, CHEST_TAG;
+    private string WALK_PARAMETER, COIN_TAG, CHEST_TAG, BOOMERANG_TAG;
 
     // Collectables and Weapons
     private int points, maxPoint=4; // Coin Points
@@ -58,6 +59,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
+    void Awake()
+    {
+        velocity=Vector2.zero;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -70,12 +75,14 @@ public class PlayerMovement : MonoBehaviour
         WALK_PARAMETER="Direction";
         COIN_TAG="Coin";
         CHEST_TAG="Chest";
+        BOOMERANG_TAG="Boomerang";
 
         offset_a_d=playerCollider.size.x*transform.localScale.x/2;
         offset_w_s=playerCollider.size.y*transform.localScale.y/2;
         offset_diagonal=Mathf.Sqrt(offset_a_d*offset_a_d + offset_w_s*offset_w_s);
         Physics2D.queriesStartInColliders=false;
         initializeWeaponIndexMap();
+        gameManager=FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -105,18 +112,12 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(changeWeapon());
         lineOfSight();
     }
-    void launchWeapon()
+    Vector2 getMovementDirection()
     {
-        if(Input.GetKeyDown(KeyCode.X) && weaponMaxCount[weaponIndex]>0)
-        {
-            GameObject weapon=Instantiate(Weapons[weaponIndex], playerBody.position, Quaternion.Euler(0, 0, angle*Mathf.Rad2Deg));
-            weapon.transform.SetParent(transform);
-            weaponMaxCount[weaponIndex]--;
-        }
+        return new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
     }
-    void lineOfSight()
+    float getOffset()
     {
-        Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         float offset=offset_diagonal;
         switch(angle)
         {
@@ -124,7 +125,27 @@ public class PlayerMovement : MonoBehaviour
             case -Mathf.PI/2    :offset=offset_w_s;break;   // S Direction
             case 0              :   // D Direction
             case Mathf.PI       :offset=offset_a_d;break;   // A Direction
-        }    
+        }
+        return offset;
+    }
+    void launchWeapon()
+    {
+        if(Input.GetKeyDown(KeyCode.X) && weaponMaxCount[weaponIndex]>0)
+        {
+            Vector2 direction=getMovementDirection();
+            float offset=getOffset();
+            Vector2 origin=playerBody.position+direction*offset;
+            GameObject weapon=Instantiate(Weapons[weaponIndex], origin, Quaternion.Euler(0, 0, angle*Mathf.Rad2Deg));
+            gameManager.addToReleasedWeaponStash(weapon.transform);
+            if(weapon.CompareTag(BOOMERANG_TAG))
+                weapon.GetComponent<Boomerang>().setReturnTransform(transform);
+            weaponMaxCount[weaponIndex]--;
+        }
+    }
+    void lineOfSight()
+    {
+        Vector2 direction=getMovementDirection();
+        float offset=getOffset();
         Vector2 origin=playerBody.position+direction*offset;
         RaycastHit2D visibleObject=Physics2D.Raycast(origin, direction, minAccessRange);
         if(visibleObject.collider != null)
