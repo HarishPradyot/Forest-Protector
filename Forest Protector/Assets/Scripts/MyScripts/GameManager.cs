@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static bool isGameRunning;
     [SerializeField]
-    private Transform ReleasedWeaponsStash;
+    private static Transform ReleasedWeaponsStash;
     // Start is called before the first frame update
+    void Awake()
+    {
+        isGameRunning=true;
+    }
     void Start()
     {
         
@@ -17,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         
     }
-    public void addToReleasedWeaponStash(Transform weaponTransform)
+    public static void addToReleasedWeaponStash(Transform weaponTransform)
     {
         weaponTransform.SetParent(ReleasedWeaponsStash);
     }
