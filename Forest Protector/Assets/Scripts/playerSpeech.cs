@@ -10,37 +10,52 @@ public class playerSpeech : MonoBehaviour
     
     [SerializeField]
     private GameObject panelImg;
+
+    List<List<string>> conversation = new List<List<string>>();
     
     [SerializeField]
     private TextMeshProUGUI textBox;
     // Start is called before the first frame update
 
+    private bool active;
     void Start()
     {
-        StartCoroutine("Speech");
+        active = false;
+        // Add all the Conversation u want and iterate through them through them...>!
+        conversation.Add(new List<string>(){"This part is game intro","split into pieces based on word length","this is one"});
+        conversation.Add(new List<string>(){"This part is game intro","split into pieces based on word length","This is two"});
+        conversation.Add(new List<string>(){"This part is game intro","split into pieces based on word length",""});
+        conversation.Add(new List<string>(){"This part is game intro","split into pieces based on word length",""});
+        conversation.Add(new List<string>(){"This part is game intro","split into pieces based on word length",""});
+        conversation.Add(new List<string>(){"This part is game intro","split into pieces based on word length",""});
+        Debug.Log(conversation[0][0]);
+        StartCoroutine(Speech(conversation[1]));
     }
 
-    IEnumerator Speech(){
+    public void startConversation(int Number){
+        if(active==false){
+            StartCoroutine(Speech(conversation[Number]));
+        }
+    }
+    IEnumerator Speech(List<string> conversation){
 
-        yield return new WaitForSeconds(5f);
-        panelImg.SetActive(true);
-        string x= "What should i keep here?";
-        string y= "i should become better!";
-        Debug.Log(y.Length);
-        textBox.text = "";
-        for(int i=0;i<x.Length;i++){
-            yield return new WaitForSeconds(0.1f);
-            textBox.text = textBox.text + x[i];
+        if(active == false){
+            active = true;
+            yield return new WaitForSeconds(1f);
+            panelImg.SetActive(true);
+
+            foreach(string s in conversation){
+                textBox.text = "";
+                for(int i=0;i<s.Length;i++){
+                    yield return new WaitForSeconds(0.1f);
+                    textBox.text = textBox.text + s[i];
+                }
+                yield return new WaitForSeconds(2f);
+            }
+            StopCoroutine("Speech");
+            panelImg.SetActive(false);
+            active = false;
         }
-        yield return new WaitForSeconds(3f);
-        textBox.text = "";
-        for(int i=0;i<y.Length;i++){
-            yield return new WaitForSeconds(0.1f);
-            textBox.text = textBox.text + y[i];
-        }
-        yield return new WaitForSeconds(3f);
-        StopCoroutine("Speech");
-        panelImg.SetActive(false);
         
     }
 
