@@ -171,11 +171,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathUpdateSeconds: 0.5
-  target: {fileID: 0}
-  speed: 12
+  speed_Patrol: 5
+  speed_Follow: 12
+  forceSpeed: 100
   nextWaypointDistance: 2
+  stopDistanceFromEnemy: 5
+  maxDistanceFromPatrolSite: 100
+  maxFollowDistance: 100
   angle: 0
   isFollowing: 0
+  playerFindDistance: 10
 --- !u!58 &138464294
 CircleCollider2D:
   m_ObjectHideFlags: 0

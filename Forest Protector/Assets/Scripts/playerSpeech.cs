@@ -32,6 +32,7 @@ public class playerSpeech : MonoBehaviour
         StartCoroutine(Speech(conversation[0]));
     }
 
+
     public void startConversation(int Number){
         if(active==false){
             StartCoroutine(Speech(conversation[Number]));

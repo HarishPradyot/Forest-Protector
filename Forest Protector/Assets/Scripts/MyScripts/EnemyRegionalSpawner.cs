@@ -18,7 +18,6 @@ public class EnemyRegionalSpawner : MonoBehaviour
     }
     IEnumerator SpawnEnemies() 
     {
-        Debug.Log("Here???");
         while(GameManager.isGameRunning) 
         {
             yield return new WaitForSeconds(timeBetweenSpawn);
@@ -27,9 +26,8 @@ public class EnemyRegionalSpawner : MonoBehaviour
             enemyCount++;
             enemyIndex = Random.Range(0, enemyPrefabs.Length);
             
-            //GameObject spawnedEnemy = Instantiate(enemyPrefabs[enemyIndex], transform.position, Quaternion.identity);
+            GameObject spawnedEnemy = Instantiate(enemyPrefabs[enemyIndex], transform.position, Quaternion.identity, transform);
         }
-        Debug.Log("What about Here???");
     }
     public Transform randomWayPoint(ref int previousWayPoint)
     {
@@ -44,6 +42,12 @@ public class EnemyRegionalSpawner : MonoBehaviour
         }
         previousWayPoint=index;
         return wayPoints[index];
+    }
+    public Transform wayPoint(int wayPointIndex)
+    {
+        if(wayPointIndex<0 || wayPointIndex>wayPoints.Length)
+            return randomWayPoint(ref wayPointIndex);
+        return wayPoints[wayPointIndex];
     }
 }
 
