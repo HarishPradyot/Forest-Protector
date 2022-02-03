@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1895152537}
   - component: {fileID: 4101847210366974539}
   - component: {fileID: -3351692975007082553}
+  - component: {fileID: 537724216}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -167,13 +168,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee80bf9ce0a5949934d4651ca3208e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NoOfPlays: 0
   fadeSpeed: 1
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 0}
+  health: {fileID: 0}
+  scoreText: {fileID: 0}
+  score: 0
   minAccessRange: 1.5
   longPressDuration: 1.5
   coinText: {fileID: 0}
+  TotalNumberOfCoins: 0
   speed: 14
   angle: 0
   smoothInputMagnitude: 0
@@ -182,3 +188,18 @@ MonoBehaviour:
   - {fileID: 7868975317074196039, guid: b89170b6e6d29d2419d5725b59a75118, type: 3}
   - {fileID: 4063055854226802343, guid: 8b0e935663581be488a2b8751d205462, type: 3}
   weaponMaxCount: 0200000001000000
+--- !u!114 &537724216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781711265290305277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971b5a6fe545f927ca271a5dffea3204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLength: 100
+  panelImg: {fileID: 0}
+  textBox: {fileID: 0}
