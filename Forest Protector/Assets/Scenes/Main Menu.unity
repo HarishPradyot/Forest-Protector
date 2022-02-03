@@ -3078,6 +3078,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac964da983ec7a948accf2649fe9b36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEffectsSlider: {fileID: 1134211963}
+  soundEffectsAudio:
+  - {fileID: 1896485944}
 --- !u!82 &1896485944
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3331,7 +3334,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058286920}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18fd8b4dd6f285641a6762fd6f585194, type: 3}
   m_Name: 
@@ -3348,6 +3351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac964da983ec7a948accf2649fe9b36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEffectsSlider: {fileID: 1457652244}
+  soundEffectsAudio:
+  - {fileID: 2058286923}
 --- !u!82 &2058286923
 AudioSource:
   m_ObjectHideFlags: 0
