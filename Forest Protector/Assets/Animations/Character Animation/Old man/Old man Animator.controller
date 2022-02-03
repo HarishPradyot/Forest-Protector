@@ -586,7 +586,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Old man Animator
+  m_Name: Old Man Animator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Direction

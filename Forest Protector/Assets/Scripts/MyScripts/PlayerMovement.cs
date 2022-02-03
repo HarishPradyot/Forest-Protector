@@ -5,9 +5,10 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-     public int maxHealth=100;
-     public int currentHealth;
-     public HealthBar healthBar;
+    public int maxHealth=100;
+    public int currentHealth;
+    public HealthBar healthBar;
+
     // Global Game Varibles
     [SerializeField]
     private float minAccessRange=1.5f;  // Min distance between player and Collactables so that they are accessible (Example. Chests)
@@ -23,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private int numberOfCoins;
     // Position and Direction Parameters
     [SerializeField]
-    private int speed=10;
+    private int speed=14;
     private int direction;
 
     // Position and Direction
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Additional Attributes
     private float offset_a_d, offset_w_s, offset_diagonal;  // Offset values for raycast so that the ray originates outside player collider for horizontal, vertical and diagonal motion
-    private string WALK_PARAMETER, COIN_TAG, CHEST_TAG, TRAP_TAG, BOOMERANG_TAG;
+    private string WALK_PARAMETER, COIN_TAG, CHEST_TAG, TRAP_TAG, BOOMERANG_TAG, GARBAGE_TAG;
     
     // Collectables and Weapons
     private int points, maxPoint=4; // Coin Points
@@ -83,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
         TRAP_TAG="Trap";
         BOOMERANG_TAG="Boomerang";
         TRAP_TAG="Trap";
+        GARBAGE_TAG="Garbage";
 
         numberOfCoins = 0;
         offset_a_d=playerCollider.size.x*transform.localScale.x/2;
@@ -201,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
             coinText.text ="Coins: " + numberOfCoins.ToString(); 
             collider.GetComponent<Coin>().onCoinCollected();
         }
-        if(collider.CompareTag("Garbage")){
+        if(collider.CompareTag(GARBAGE_TAG)){
             collider.GetComponent<GarbageAnimation>().destroy();
         }
     }

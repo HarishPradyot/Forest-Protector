@@ -43,12 +43,12 @@ public class TrapLever : MonoBehaviour
 
     public void openTrap()
     {
-        if(noOfEnemies==0){
+        if(noOfEnemies==0)
+        {
             Debug.Log("Long Presss Working");
             trapAnimator.Play(OPEN_TRAP);
             relatedCage.GetComponent<SpriteRenderer>().sprite = cageOpen;
             StartCoroutine(closeTrap());
-        
         }
     }
     IEnumerator closeTrap()
