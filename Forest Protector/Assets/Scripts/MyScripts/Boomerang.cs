@@ -20,7 +20,6 @@ public class Boomerang : MonoBehaviour
         angularDisplacement=Vector3.zero;
         distance=0;
         canInflictDamage=true;
-        Debug.Log(transform.rotation.eulerAngles);
     }
 
     // Update is called once per frame

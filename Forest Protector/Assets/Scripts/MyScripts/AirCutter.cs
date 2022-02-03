@@ -17,7 +17,6 @@ public class AirCutter : MonoBehaviour
         velocity=(Vector2)transform.right * speed;
         distance=0;
         canInflictDamage=true;
-        Debug.Log(transform.rotation.eulerAngles);
     }
 
     // Update is called once per frame
