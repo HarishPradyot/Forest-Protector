@@ -6,7 +6,7 @@ public class MainMenuController : MonoBehaviour
 {
    public void PlayGame()
    {
-      SceneManager.LoadScene("Main Game GT");
+      SceneManager.LoadScene("Main Game");
    }
     public void QuitGame()
     {
