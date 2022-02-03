@@ -49,11 +49,11 @@ public class TrapSpawner : MonoBehaviour
                 spawnedEnemies[1] = Instantiate(enemiesSelection[Random.Range(0,enemiesSelection.Length)]);
                 Debug.Log("Trap Spawned " + Time.time);
 
-                spawnedTrap.transform.position = spawners[randomSpawner].position;
-                spawnedTrap.GetComponent<TrapLever>().spawnLocation = randomSpawner;
-                spawnedTrap.GetComponent<TrapLever>().TrapSpawner = gameObject;
-                spawnedTrap.GetComponent<TrapLever>().relatedAnimal = spawnedAnimal;
-                spawnedTrap.GetComponent<TrapLever>().relatedCage = spawnedCage;
+                // spawnedTrap.transform.position = spawners[randomSpawner].position;
+                // spawnedTrap.GetComponent<TrapLever>().spawnLocation = randomSpawner;
+                // spawnedTrap.GetComponent<TrapLever>().TrapSpawner = gameObject;
+                // spawnedTrap.GetComponent<TrapLever>().relatedAnimal = spawnedAnimal;
+                // spawnedTrap.GetComponent<TrapLever>().relatedCage = spawnedCage;
 
                 spawnedAnimal.transform.position = spawners[randomSpawner].position;
                 spawnedAnimal.transform.position += new Vector3(5f,0,0);

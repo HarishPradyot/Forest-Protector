@@ -24,16 +24,16 @@ public class FadeInAndOut : MonoBehaviour
             yield return null;
         }
 
-        if(gameObject.CompareTag("Chest")){
-            Chest chest = gameObject.GetComponent<Chest>();
+        // if(gameObject.CompareTag("Chest")){
+        //     Chest chest = gameObject.GetComponent<Chest>();
             
-            chest.ChestSpawner.GetComponent<ChestSpawner>().resetSpawner(chest.spawnLocation);
-        }
-        if(gameObject.CompareTag("Trap")){
-            TrapLever trap= gameObject.GetComponent<TrapLever>();
+        //     chest.ChestSpawner.GetComponent<ChestSpawner>().resetSpawner(chest.spawnLocation);
+        // }
+        // if(gameObject.CompareTag("Trap")){
+        //     TrapLever trap= gameObject.GetComponent<TrapLever>();
             
-            trap.TrapSpawner.GetComponent<TrapSpawner>().resetSpawner(trap.spawnLocation);
-        }
+        //     trap.TrapSpawner.GetComponent<TrapSpawner>().resetSpawner(trap.spawnLocation);
+        // }
         Destroy(gameObject);
     }
     IEnumerator awakeGarbage()

@@ -231,8 +231,8 @@ public class PlayerMovement : MonoBehaviour
                     isPlayerDead=true;
                     playerDeath();
                 }
+                boomerang.Damage=false;
             }
-            boomerang.Damage=false;
         }
         else if(collider.CompareTag(AIRCUTTER_TAG))
         {
@@ -245,8 +245,8 @@ public class PlayerMovement : MonoBehaviour
                     isPlayerDead=true;
                     playerDeath();
                 }
+                aircutter.Damage=false;
             }
-            aircutter.Damage=false;
         }
     }
     IEnumerator canOpenChestOrTrap(Collider2D ChestOrTrap, string tag)

@@ -31,12 +31,12 @@ public class ChestSpawner : MonoBehaviour
             
 
             if(spawnerBool[randomSpawner]==false){
-                spawnedChest = Instantiate(chestSprite);
-                Debug.Log("Chest Spawned " + Time.time);
-                spawnedChest.transform.position = spawners[randomSpawner].position;
-                spawnedChest.GetComponent<Chest>().spawnLocation = randomSpawner;
-                spawnedChest.GetComponent<Chest>().ChestSpawner = gameObject;
-                spawnerBool[randomSpawner] = true;
+                // spawnedChest = Instantiate(chestSprite);
+                // Debug.Log("Chest Spawned " + Time.time);
+                // spawnedChest.transform.position = spawners[randomSpawner].position;
+                // spawnedChest.GetComponent<Chest>().spawnLocation = randomSpawner;
+                // spawnedChest.GetComponent<Chest>().ChestSpawner = gameObject;
+                // spawnerBool[randomSpawner] = true;
             }
             
         }

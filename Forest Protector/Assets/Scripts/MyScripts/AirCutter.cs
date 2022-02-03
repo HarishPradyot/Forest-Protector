@@ -35,9 +35,9 @@ public class AirCutter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         displacement=velocity*Time.deltaTime;
         distance+=displacement.magnitude;
-        
         if(distance>range && canInflictDamage)
             Damage=false;
     }
