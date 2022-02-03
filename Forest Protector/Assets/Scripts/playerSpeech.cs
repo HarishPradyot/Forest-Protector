@@ -22,12 +22,12 @@ public class playerSpeech : MonoBehaviour
     {
         active = false;
         // Add all the Conversation u want and iterate through them through them...>!
-        conversation.Add(new List<string>(){"Hi I am the forest protector","Help me in protecting this forest"});
+        conversation.Add(new List<string>(){"Hi I am the forest protector","Help me in protecting this forest","There are traps and hunters all along the forest... so be careful."});
         conversation.Add(new List<string>(){"Hey who are you","Why are you trapping these innocent animals","I'll not let you do this"});
         conversation.Add(new List<string>(){"Who are you to stop me","My boss ordered me to trap these animals","Get off from here"});
         conversation.Add(new List<string>(){"I am the protector of this forest","I will never let you trap these animals","Inorder to kill these animals, you have to kill me first"});
-        conversation.Add(new List<string>(){"Why are you throwing garbage in this beautiful forest","If we protect the nature, the nature will protect us","Keeping this forest clean and hygiene is our responsibility"});
-        conversation.Add(new List<string>(){"Oh sorry we will not repeat this again","Good. Tell your friends as well","Protect nature and the LIFE ON EARTH"});
+        // conversation.Add(new List<string>(){"Why are you campers throwing garbage in public places","If we protect the nature, the nature will protect us","Keeping this environment clean is our responsibility"});
+        // conversation.Add(new List<string>(){"Oh sorry we will not repeat this again","Good. Tell your friends as well","Protect nature and the LIFE ON EARTH"});
         Debug.Log(conversation[0][0]);
         StartCoroutine(Speech(conversation[0]));
     }
