@@ -5,9 +5,14 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
+    private float fadeSpeed = 1f;
     public int maxHealth=100;
+    [SerializeField]
     public int currentHealth;
     public HealthBar healthBar;
+    private bool isPlayerDead;
+    private Vector3 startPosition;
 
     // Global Game Varibles
     [SerializeField]
@@ -40,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Additional Attributes
     private float offset_a_d, offset_w_s, offset_diagonal;  // Offset values for raycast so that the ray originates outside player collider for horizontal, vertical and diagonal motion
-    private string WALK_PARAMETER, COIN_TAG, CHEST_TAG, TRAP_TAG, BOOMERANG_TAG, GARBAGE_TAG;
+    private string WALK_PARAMETER, COIN_TAG, CHEST_TAG, TRAP_TAG, BOOMERANG_TAG, AIRCUTTER_TAG, GARBAGE_TAG;
     
     // Collectables and Weapons
     private int points, maxPoint=4; // Coin Points
@@ -72,7 +77,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // currentHealth=maxHealth;
         // healthBar.SetMaxHealth(maxHealth);
         spriteRenderer=GetComponent<SpriteRenderer>();
         playerBody=GetComponent<Rigidbody2D>();
@@ -83,10 +87,13 @@ public class PlayerMovement : MonoBehaviour
         CHEST_TAG="Chest";
         TRAP_TAG="Trap";
         BOOMERANG_TAG="Boomerang";
+        AIRCUTTER_TAG="Air Cutter";
         TRAP_TAG="Trap";
         GARBAGE_TAG="Garbage";
 
-        numberOfCoins = 0;
+        numberOfCoins=0;
+        currentHealth=maxHealth;
+        startPosition=transform.position;
         offset_a_d=playerCollider.size.x*transform.localScale.x/2;
         offset_w_s=playerCollider.size.y*transform.localScale.y/2;
         offset_diagonal=Mathf.Sqrt(offset_a_d*offset_a_d + offset_w_s*offset_w_s);
@@ -147,7 +154,13 @@ public class PlayerMovement : MonoBehaviour
             GameObject weapon=Instantiate(Weapons[weaponIndex], origin, Quaternion.Euler(0, 0, angle*Mathf.Rad2Deg));
             GameManager.addToReleasedWeaponStash(weapon.transform);
             if(weapon.CompareTag(BOOMERANG_TAG))
-                weapon.GetComponent<Boomerang>().setReturnTransform(transform);
+            {
+                Boomerang boomerang=weapon.GetComponent<Boomerang>();
+                boomerang.setReturnTransform(transform);
+                boomerang.Offset=offset;
+            }
+            else if(weapon.CompareTag(AIRCUTTER_TAG))
+                weapon.GetComponent<AirCutter>().setLaunchTransform(transform);
             weaponMaxCount[weaponIndex]--;
         }
     }
@@ -206,6 +219,35 @@ public class PlayerMovement : MonoBehaviour
         if(collider.CompareTag(GARBAGE_TAG)){
             collider.GetComponent<GarbageAnimation>().destroy();
         }
+
+        if(collider.CompareTag(BOOMERANG_TAG))
+        {
+            Boomerang boomerang=collider.GetComponent<Boomerang>();
+            if(boomerang.Damage && boomerang.getReturnTransform()!=transform)
+            {
+                currentHealth-=boomerang.getDamage();
+                if(currentHealth<=0 && !isPlayerDead)
+                {
+                    isPlayerDead=true;
+                    playerDeath();
+                }
+            }
+            boomerang.Damage=false;
+        }
+        else if(collider.CompareTag(AIRCUTTER_TAG))
+        {
+            AirCutter aircutter=collider.GetComponent<AirCutter>();
+            if(aircutter.Damage && aircutter.getLaunchTransform()!=transform)
+            {
+                currentHealth-=aircutter.getDamage();
+                if(currentHealth<=0 && !isPlayerDead)
+                {
+                    isPlayerDead=true;
+                    playerDeath();
+                }
+            }
+            aircutter.Damage=false;
+        }
     }
     IEnumerator canOpenChestOrTrap(Collider2D ChestOrTrap, string tag)
     {
@@ -242,13 +284,64 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Press Longer");
         }
     }
+    /*
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("--------------------------"+collision.gameObject.name+"------------------------------"+collision.gameObject.tag);
+        if(collision.gameObject.CompareTag(BOOMERANG_TAG))
+        {
+            Boomerang boomerang=collision.gameObject.GetComponent<Boomerang>();
+            if(boomerang.Damage && boomerang.getReturnTransform()!=transform)
+            {
+                currentHealth-=boomerang.getDamage();
+                if(currentHealth<=0 && !isPlayerDead)
+                {
+                    isPlayerDead=true;
+                    playerDeath();
+                }
+            }
+            boomerang.Damage=false;
+        }
+        else if(collision.gameObject.CompareTag(AIRCUTTER_TAG))
+        {
+            AirCutter aircutter=collision.gameObject.GetComponent<AirCutter>();
+            if(aircutter.Damage && aircutter.getLaunchTransform()!=transform)
+            {
+                currentHealth-=aircutter.getDamage();
+                if(currentHealth<=0 && !isPlayerDead)
+                {
+                    isPlayerDead=true;
+                    playerDeath();
+                }
+            }
+            aircutter.Damage=false;
+        }
+    }
+    */
+    void playerDeath()
+    {
+        StartCoroutine(resetPlayer());
+    }
+    IEnumerator resetPlayer()
+    {
+        Material player=gameObject.GetComponent<Renderer>().material;
+        while(player.color.a > 0.01f)
+        {
+            player.color = new Color(player.color.r, player.color.g, player.color.b, player.color.a-fadeSpeed*Time.deltaTime);
+            yield return null;
+        }
+        int noOfChildren=transform.childCount;
+        for(int i=0;i<noOfChildren;i++)
+        {
+            GameObject child=transform.GetChild(i).gameObject;
+            if(child!=null)
+                DestroyImmediate(child);
+        }
+        transform.position=startPosition;
+        player.color = new Color(player.color.r, player.color.g, player.color.b, 1);
+    }
     public void restoreWeaponCount(string weaponName)
     {
         weaponMaxCount[Weapon_to_Index[weaponName]]++;
-    }
-    public void TakeDamage(int damage)
-    {
-        currentHealth-=damage;
-        healthBar.SetHealth(currentHealth);
     }
 }

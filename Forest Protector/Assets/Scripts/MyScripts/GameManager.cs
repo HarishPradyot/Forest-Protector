@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        
+        ReleasedWeaponsStash=gameObject.transform.GetChild(0);
     }
 
     // Update is called once per frame

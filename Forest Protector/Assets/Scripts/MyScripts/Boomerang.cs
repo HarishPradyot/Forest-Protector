@@ -7,15 +7,38 @@ public class Boomerang : MonoBehaviour
     [SerializeField]
     // Damage inflicted can be analogous to distance from source
     private float speed=12f, rotateSpeed=2f, range=15f, maxDamage=10f;
+    private float offset;
+    private string ENEMY_TAG, PLAYER_TAG;
 
     private Vector2 velocity, displacement;
     private Vector3 angularDisplacement;
     private float distance;
     private bool canInflictDamage;
+    public bool Damage
+    {
+        get
+        {
+            return canInflictDamage;
+        }
+        set
+        {
+            canInflictDamage=value;
+            Destroy(gameObject.GetComponent<CapsuleCollider2D>());
+        }
+    }
+    public float Offset
+    {
+        set
+        {
+            offset=value;
+        }
+    }
     private Transform returnTransform;
     // Start is called before the first frame update
     void Start()
     {
+        ENEMY_TAG="Enemy";
+        PLAYER_TAG="Player";
         velocity=(Vector2)transform.right*speed;
         angularDisplacement=Vector3.zero;
         distance=0;
@@ -38,15 +61,23 @@ public class Boomerang : MonoBehaviour
         distance+=displacement.magnitude;
         if(distance>range)
         {
-            canInflictDamage=false;
+            Damage=false;
             transform.SetParent(returnTransform);
         }
     }
     void returnMotion()
     {
-        if((transform.position-returnTransform.position).magnitude < 0.01f)
+        if(returnTransform==null)
         {
-            FindObjectOfType<PlayerMovement>().restoreWeaponCount(gameObject.tag);
+            Destroy(gameObject); 
+            return;
+        }
+        else if((transform.position-returnTransform.position).magnitude < offset)
+        {
+            if(returnTransform.gameObject.CompareTag(ENEMY_TAG))
+                returnTransform.GetComponent<EnemyAIMovement>().restoreWeaponCount(gameObject.tag);
+            else if(returnTransform.gameObject.CompareTag(PLAYER_TAG))
+                returnTransform.GetComponent<PlayerMovement>().restoreWeaponCount(gameObject.tag);
             Destroy(gameObject);
         }
         velocity=(Vector2)(returnTransform.position-transform.position).normalized*speed;
@@ -64,5 +95,9 @@ public class Boomerang : MonoBehaviour
     public void setReturnTransform(Transform returnTransform)
     {
         this.returnTransform=returnTransform;
+    }
+    public Transform getReturnTransform()
+    {
+        return returnTransform;
     }
 }
