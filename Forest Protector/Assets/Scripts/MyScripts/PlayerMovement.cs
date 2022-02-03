@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     private float longPressDuration=4f;  // Time for which key must be pressed down to open Collactables (Example. Chests)
     [SerializeField]
     private Dictionary<string, int> Weapon_to_Index;
-    private GameManager gameManager;
     
     // Position and Direction Parameters
     [SerializeField]
@@ -83,7 +82,6 @@ public class PlayerMovement : MonoBehaviour
         offset_diagonal=Mathf.Sqrt(offset_a_d*offset_a_d + offset_w_s*offset_w_s);
         Physics2D.queriesStartInColliders=false;
         initializeWeaponIndexMap();
-        gameManager=FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -137,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
             float offset=getOffset();
             Vector2 origin=playerBody.position+direction*offset;
             GameObject weapon=Instantiate(Weapons[weaponIndex], origin, Quaternion.Euler(0, 0, angle*Mathf.Rad2Deg));
-            gameManager.addToReleasedWeaponStash(weapon.transform);
+            GameManager.addToReleasedWeaponStash(weapon.transform);
             if(weapon.CompareTag(BOOMERANG_TAG))
                 weapon.GetComponent<Boomerang>().setReturnTransform(transform);
             weaponMaxCount[weaponIndex]--;

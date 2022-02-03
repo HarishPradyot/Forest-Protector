@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1781711265290305276}
   - component: {fileID: 1781711265290305278}
   - component: {fileID: 1895152537}
-  - component: {fileID: -299987360272086284}
   - component: {fileID: 2351040214957836066}
+  - component: {fileID: 6377654013917440781}
   m_Layer: 6
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -129,21 +129,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-299987360272086284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781711265290305277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c146fce43ba02c34d9da76f44284971f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  dir: {x: 0, y: 0, z: 0}
-  turnSpeed: 0
 --- !u!58 &2351040214957836066
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -160,3 +145,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &6377654013917440781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781711265290305277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172bb208ccd765f4e9152165ae6f2380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathUpdateSeconds: 0.5
+  target: {fileID: 0}
+  speed: 12
+  forceSpeed: 100
+  nextWaypointDistance: 2
+  angle: 0
+  isFollowing: 0
