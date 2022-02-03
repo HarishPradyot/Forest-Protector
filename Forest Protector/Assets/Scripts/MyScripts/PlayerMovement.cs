@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,7 +15,12 @@ public class PlayerMovement : MonoBehaviour
     private float longPressDuration=4f;  // Time for which key must be pressed down to open Collactables (Example. Chests)
     [SerializeField]
     private Dictionary<string, int> Weapon_to_Index;
-    
+
+    [SerializeField]
+    private TextMeshProUGUI coinText;
+
+
+    private int numberOfCoins;
     // Position and Direction Parameters
     [SerializeField]
     private int speed=10;
@@ -78,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
         BOOMERANG_TAG="Boomerang";
         TRAP_TAG="Trap";
 
+        numberOfCoins = 0;
         offset_a_d=playerCollider.size.x*transform.localScale.x/2;
         offset_w_s=playerCollider.size.y*transform.localScale.y/2;
         offset_diagonal=Mathf.Sqrt(offset_a_d*offset_a_d + offset_w_s*offset_w_s);
@@ -190,6 +197,8 @@ public class PlayerMovement : MonoBehaviour
         if(collider.CompareTag(COIN_TAG))
         {
             points+=Random.Range(1, maxPoint+1);
+            numberOfCoins +=1;
+            coinText.text ="Coins: " + numberOfCoins.ToString(); 
             collider.GetComponent<Coin>().onCoinCollected();
         }
         if(collider.CompareTag("Garbage")){

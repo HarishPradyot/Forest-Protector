@@ -45,6 +45,7 @@ public class CoinSpawner : MonoBehaviour
 
     public void resetSpawner(int i){
         Debug.Log("TransformReset");
+        coinCount--;
         spawnerBool[i] = false;
     }
 }
