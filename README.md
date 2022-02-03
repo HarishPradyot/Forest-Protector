@@ -8,6 +8,7 @@ CS19B008 -<a href="https://github.com/roopasree123" target="_blank">Roopa Sree</
 ## Contents
 - [Description](#description)
 - [Technologies used](#technologies-used)
+- [Screen shots](#screen-shots)
 - [Link](#link)
 - [Contributions](#contributions)
 ## Description
@@ -15,6 +16,13 @@ CS19B008 -<a href="https://github.com/roopasree123" target="_blank">Roopa Sree</
 	The main game will have enemies moving around trying to trap animals in the forest. The player should try to fight against these enemies and must release the animals from the traps. The game will also have some campers throwing garbage in the forest and damaging the forest unknowingly. The player has to talk to them and explain to them why it is bad to throw garbage in the forest and how it damages the forest. He has to collect the garbage and clean the forest. Based on the player’s performance, he will get coins. Player can also collect treasure chests, to increase his health. The game will end when the timer ends or when the player loses his complete health.
 ## Technologies used
 >Unity Platform( Version: 2021.2.8f1), Github, Visual Studio Code
+## Screen shots
+<!-- <p>
+    <img src="screenshots/sc1.png" height="500" width="1820"><br>
+    <img src="screenshots/sc1" height="400" width="1320"><br>
+    <img src="assets/Info_enable.png" height="400" width="1320"><br>
+    <img src="assets/Info_disable.png" height="400" width="1320"><br>
+</p> -->
 ## Link
 Link For the game is :
 ## Contributions
