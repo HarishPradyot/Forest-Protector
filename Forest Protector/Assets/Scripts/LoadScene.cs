@@ -16,4 +16,7 @@ public class LoadScene : MonoBehaviour
    public void NextLevel () {
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
    }
+   public void MainGame(){
+       SceneManager.LoadScene("Main Game");
+   }
 }
