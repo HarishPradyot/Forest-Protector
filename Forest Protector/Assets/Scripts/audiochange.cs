@@ -46,14 +46,18 @@ public class audiochange : MonoBehaviour
         if (firstPlayInt == 0)
         {
             soundEffectsFloat = .75f;
-            soundEffectsSlider.value = soundEffectsFloat;
+            if(soundEffectsSlider){
+                soundEffectsSlider.value = soundEffectsFloat;
+            }
             PlayerPrefs.SetFloat(SoundEffectsPref, soundEffectsFloat);
             PlayerPrefs.SetInt(FirstPlay, -1);
         }
         else
         {
-           soundEffectsFloat = PlayerPrefs.GetFloat(SoundEffectsPref);
-            soundEffectsSlider.value = soundEffectsFloat;
+            soundEffectsFloat = PlayerPrefs.GetFloat(SoundEffectsPref);
+            if(soundEffectsSlider){
+                soundEffectsSlider.value = soundEffectsFloat;
+            }
            
         }
     }
@@ -64,7 +68,9 @@ public class audiochange : MonoBehaviour
 
         // Setting volume option of Audio Source to be equal to musicVolume
         // audioSrc.volume = musicVolume;
-        UpdateSound();
+        if(soundEffectsSlider){
+            UpdateSound();
+        }
     }
 
     // Method that is called by slider game object

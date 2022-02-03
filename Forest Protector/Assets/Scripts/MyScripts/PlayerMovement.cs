@@ -90,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         score =0;
         TotalNumberOfCoins=0;
         
+        health.text = "Health : 100"; 
         spriteRenderer=GetComponent<SpriteRenderer>();
         playerBody=GetComponent<Rigidbody2D>();
         playerAnimator=GetComponent<Animator>();

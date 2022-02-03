@@ -17,7 +17,7 @@ public class LoadScene : MonoBehaviour
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
    }
    public void MainGame(){
-       SceneManager.LoadScene("Main Game");
+       SceneManager.LoadScene("Cut Scene 2");
        Time.timeScale = 1f;
    }
 }

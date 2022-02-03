@@ -6,6 +6,8 @@ public class GarbageSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject[] sprites;
+    [SerializeField] private int start,end;
+
 
     private GameObject spawn;
 
@@ -19,7 +21,7 @@ public class GarbageSpawner : MonoBehaviour
 
     IEnumerator GarbageGenerator(){
         while(true){
-            float x = Random.Range(3,7);
+            float x = Random.Range(start,end);
             yield return(new WaitForSeconds(x));
             if(spawn==null){
                 Debug.Log("Was Destroyed");

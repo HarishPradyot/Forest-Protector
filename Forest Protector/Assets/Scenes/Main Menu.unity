@@ -3319,7 +3319,6 @@ GameObject:
   - component: {fileID: 2058286924}
   - component: {fileID: 2058286923}
   - component: {fileID: 2058286922}
-  - component: {fileID: 2058286921}
   m_Layer: 0
   m_Name: BackgroundSound
   m_TagString: Untagged
@@ -3327,18 +3326,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2058286921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058286920}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18fd8b4dd6f285641a6762fd6f585194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2058286922
 MonoBehaviour:
   m_ObjectHideFlags: 0
