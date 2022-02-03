@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     // Additional Attributes
     private float offset_a_d, offset_w_s, offset_diagonal;  // Offset values for raycast so that the ray originates outside player collider for horizontal, vertical and diagonal motion
     private string WALK_PARAMETER, COIN_TAG, CHEST_TAG, TRAP_TAG, BOOMERANG_TAG;
-
+    
     // Collectables and Weapons
     private int points, maxPoint=4; // Coin Points
     [SerializeField]
@@ -76,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         CHEST_TAG="Chest";
         TRAP_TAG="Trap";
         BOOMERANG_TAG="Boomerang";
+        TRAP_TAG="Trap";
 
         offset_a_d=playerCollider.size.x*transform.localScale.x/2;
         offset_w_s=playerCollider.size.y*transform.localScale.y/2;

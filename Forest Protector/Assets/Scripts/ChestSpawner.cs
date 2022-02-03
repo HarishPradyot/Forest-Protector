@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChestSpawner : MonoBehaviour
 {
-     [SerializeField] private GameObject chestSprite;
+    [SerializeField] private GameObject chestSprite;
     [SerializeField] private Transform[] spawners;
     private bool[] spawnerBool;
     private GameObject spawnedChest;
