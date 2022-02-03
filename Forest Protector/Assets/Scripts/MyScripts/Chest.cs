@@ -22,8 +22,12 @@ public class Chest : MonoBehaviour
         if(spawner.getLocalEnemy() <= 0)
         {
             chestAnimator.Play(OPEN_CHEST);
+            gameObject.GetComponent<AudioSource>().Play();
             StartCoroutine(closeChest());
             spawner.ChestOpen=true;
+        }
+        else{
+            FindObjectOfType<playerSpeech>().startConversation(2);
         }
     }
     IEnumerator closeChest()

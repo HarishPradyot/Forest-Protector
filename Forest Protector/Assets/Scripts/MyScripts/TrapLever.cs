@@ -35,10 +35,15 @@ public class TrapLever : MonoBehaviour
     {
         if(spawner.getLocalEnemy() <= 0)
         {
+            
             trapAnimator.Play(OPEN_TRAP);
+            gameObject.GetComponent<AudioSource>().Play();
             relatedCage.GetComponent<SpriteRenderer>().sprite = cageOpen;
             spawner.TrapOpen=true;
             StartCoroutine(closeTrap());
+        }
+        else{
+            FindObjectOfType<playerSpeech>().startConversation(2);
         }
     }
     IEnumerator closeTrap()

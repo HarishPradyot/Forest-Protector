@@ -167,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 direction=getMovementDirection();
             float offset=getOffset();
+            gameObject.GetComponent<AudioSource>().Play();
             Vector2 origin=playerBody.position+direction*offset;
             GameObject weapon=Instantiate(Weapons[weaponIndex], origin, Quaternion.Euler(0, 0, angle*Mathf.Rad2Deg));
             GameManager.addToReleasedWeaponStash(weapon.transform);
@@ -240,6 +241,7 @@ public class PlayerMovement : MonoBehaviour
             score+=1;
             
             scoreText.text = "Score : " + score.ToString();
+            FindObjectOfType<playerSpeech>().startConversation(3);
             collider.GetComponent<GarbageAnimation>().destroy();
         }
 
