@@ -347,8 +347,8 @@ public class EnemyAIMovement : MonoBehaviour
                     isEnemyDead=true;
                     enemyDeath();
                 }
+                boomerang.Damage=false;
             }
-            boomerang.Damage=false;
         }
         else if(collision.CompareTag(AIRCUTTER_TAG))
         {
@@ -361,13 +361,13 @@ public class EnemyAIMovement : MonoBehaviour
                     isEnemyDead=true;
                     enemyDeath();
                 }
+                aircutter.Damage=false;
             }
-            aircutter.Damage=false;
         }
     }
     void enemyDeath()
     {
-        transform.parent.GetComponent<EnemyRegionalSpawner>().reduceEnemyCount();
+        spawner.reduceEnemyCount();
         StartCoroutine(destroyEnemy());
     }
     IEnumerator destroyEnemy()

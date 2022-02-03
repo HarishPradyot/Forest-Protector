@@ -121,8 +121,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   range: 40
-  maxDamage: 10
+  maxDamage: 20
   fadeSpeed: 0.5
+  damageMultiplier: 3
 --- !u!70 &4281804796381595488
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
