@@ -49,6 +49,10 @@ public class EnemyRegionalSpawner : MonoBehaviour
             return randomWayPoint(ref wayPointIndex);
         return wayPoints[wayPointIndex];
     }
+    public void reduceEnemyCount()
+    {
+        enemyCount--;
+    }
 }
 
    

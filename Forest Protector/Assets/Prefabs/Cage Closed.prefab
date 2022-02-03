@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5509226940861525115}
   - component: {fileID: -8756184946374716548}
   m_Layer: 0
-  m_Name: Cage Open (1)
+  m_Name: Cage Closed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
