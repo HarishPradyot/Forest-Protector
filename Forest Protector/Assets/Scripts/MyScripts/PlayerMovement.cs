@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
 
-    private int NoOfPlays;
+    public int NoOfPlays;
     [SerializeField]
     private float fadeSpeed = 1f;
     public int maxHealth=100;
@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI health;
+    public TextMeshProUGUI scoreText;
+    public int score;
     private bool isPlayerDead;
     private Vector3 startPosition;
 
@@ -33,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     private int numberOfCoins;
+    public int TotalNumberOfCoins;
     // Position and Direction Parameters
     [SerializeField]
     private int speed=14;
@@ -84,6 +87,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         NoOfPlays=1;
+        score =0;
+        TotalNumberOfCoins=0;
         
         spriteRenderer=GetComponent<SpriteRenderer>();
         playerBody=GetComponent<Rigidbody2D>();
@@ -222,12 +227,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collider.CompareTag(COIN_TAG))
         {
-            points+=Random.Range(1, maxPoint+1);
             numberOfCoins +=1;
+            TotalNumberOfCoins +=1;
             coinText.text ="Coins: " + numberOfCoins.ToString(); 
+            score+=1;
+            
+            scoreText.text = "Score : " + score.ToString();
             collider.GetComponent<Coin>().onCoinCollected();
         }
         if(collider.CompareTag(GARBAGE_TAG)){
+            score+=1;
+            
+            scoreText.text = "Score : " + score.ToString();
             collider.GetComponent<GarbageAnimation>().destroy();
         }
 
@@ -285,9 +296,21 @@ public class PlayerMovement : MonoBehaviour
             if(Time.time-startTime>=longPressDuration)
             {
                 if(tag.Equals(CHEST_TAG))
+                {
+
                     ChestOrTrap.GetComponent<Chest>().openChest();
-                else if(tag.Equals(TRAP_TAG))
+                    numberOfCoins +=10;
+                    TotalNumberOfCoins +=10;
+                    coinText.text ="Coins: " + numberOfCoins.ToString(); 
+                    score+=10;
+                    scoreText.text="Score : " + score.ToString();
+
+                }
+                else if(tag.Equals(TRAP_TAG)){
+                    score+=10;
+                    scoreText.text="Score : " + score.ToString();
                     ChestOrTrap.GetComponent<TrapLever>().openTrap();
+                }
             }   
             else
                 Debug.Log("Press Longer");

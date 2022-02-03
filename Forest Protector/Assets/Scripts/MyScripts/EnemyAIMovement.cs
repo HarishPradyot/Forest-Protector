@@ -367,6 +367,9 @@ public class EnemyAIMovement : MonoBehaviour
     }
     void enemyDeath()
     {
+        FindObjectOfType<PlayerMovement>().score += 20;
+        FindObjectOfType<PlayerMovement>().scoreText.text = "Score : " + FindObjectOfType<PlayerMovement>().score.ToString();
+         
         spawner.reduceEnemyCount();
         StartCoroutine(destroyEnemy());
     }
