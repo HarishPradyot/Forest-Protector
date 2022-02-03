@@ -301,18 +301,23 @@ public class PlayerMovement : MonoBehaviour
                 if(tag.Equals(CHEST_TAG))
                 {
 
-                    ChestOrTrap.GetComponent<Chest>().openChest();
-                    numberOfCoins +=10;
-                    TotalNumberOfCoins +=10;
-                    coinText.text ="Coins: " + numberOfCoins.ToString(); 
-                    score+=10;
-                    scoreText.text="Score : " + score.ToString();
+                    bool success = ChestOrTrap.GetComponent<Chest>().openChest();
+                    if(success){
+                        numberOfCoins +=10;
+                        TotalNumberOfCoins +=10;
+                        coinText.text ="Coins: " + numberOfCoins.ToString(); 
+                        score+=10;
+                        scoreText.text="Score : " + score.ToString();
+                    }
 
                 }
                 else if(tag.Equals(TRAP_TAG)){
-                    score+=10;
-                    scoreText.text="Score : " + score.ToString();
-                    ChestOrTrap.GetComponent<TrapLever>().openTrap();
+
+                    bool success = ChestOrTrap.GetComponent<TrapLever>().openTrap();
+                    if(success){
+                        score+=10;
+                        scoreText.text="Score : " + score.ToString();
+                    }
                 }
             }   
             else
@@ -342,9 +347,12 @@ public class PlayerMovement : MonoBehaviour
                 yield return null;
             if(Time.time-startTime>=longPressDuration)
             {
-                if(numberOfCoins>=10){
-                    numberOfCoins -=10;
+                if(numberOfCoins>=5){
+                    numberOfCoins -=5;
                     coinText.text ="Coins: " + numberOfCoins.ToString(); 
+                    currentHealth = maxHealth;
+                    health.text = "Health : " + currentHealth;
+                    healthBar.value =(float)currentHealth/maxHealth; 
                 }
             }
             else

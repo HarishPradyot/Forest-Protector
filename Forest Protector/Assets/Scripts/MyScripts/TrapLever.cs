@@ -31,7 +31,7 @@ public class TrapLever : MonoBehaviour
         spawner=transform.parent.GetComponent<EnemyRegionalSpawner>();
     }
 
-    public void openTrap()
+    public bool openTrap()
     {
         if(spawner.getLocalEnemy() <= 0)
         {
@@ -41,9 +41,11 @@ public class TrapLever : MonoBehaviour
             relatedCage.GetComponent<SpriteRenderer>().sprite = cageOpen;
             spawner.TrapOpen=true;
             StartCoroutine(closeTrap());
+            return true;
         }
         else{
             FindObjectOfType<playerSpeech>().startConversation(2);
+            return true;
         }
     }
     IEnumerator closeTrap()

@@ -17,7 +17,7 @@ public class Chest : MonoBehaviour
         spawner=transform.parent.GetComponent<EnemyRegionalSpawner>();
     }
 
-    public void openChest()
+    public bool openChest()
     {
         if(spawner.getLocalEnemy() <= 0)
         {
@@ -25,9 +25,11 @@ public class Chest : MonoBehaviour
             gameObject.GetComponent<AudioSource>().Play();
             StartCoroutine(closeChest());
             spawner.ChestOpen=true;
+            return true;
         }
         else{
             FindObjectOfType<playerSpeech>().startConversation(2);
+            return false;
         }
     }
     IEnumerator closeChest()

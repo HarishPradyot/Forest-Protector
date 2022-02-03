@@ -15,10 +15,14 @@ public class WanderingNPC : MonoBehaviour
     private Path path;
     private Animator NPCAnimator;
     private string WALK_PARAMETER;
+
+    [SerializeField]
     private Transform[] wayPoints;
     private Transform targetTransform;
     [SerializeField]
     private float nextWaypointDistance=2f, pathUpdateSeconds=0.5f;
+
+    [SerializeField]    
     private float angle;
     // Start is called before the first frame update
     void Start()
@@ -40,6 +44,11 @@ public class WanderingNPC : MonoBehaviour
     void FixedUpdate()
     {
         followPath_WanderingState();
+    }
+
+    void LateUpdate() {
+        NPC_Animation();
+        
     }
     void OnGenerationComplete(Path p)
     {

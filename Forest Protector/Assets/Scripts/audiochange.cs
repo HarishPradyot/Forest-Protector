@@ -4,13 +4,13 @@ using UnityEngine.UI;
 public class audiochange : MonoBehaviour
 {
 
-    private static readonly string FirstPlay = "FirstPlay";
-    private static readonly string SoundEffectsPref = "SoundEffectsPref";
+    private string FirstPlay = "FirstPlay";
+    private string SoundEffectsPref = "SoundEffectsPref";
     private int firstPlayInt;
     public Slider soundEffectsSlider;
     private float soundEffectsFloat;
     public AudioSource[] soundEffectsAudio;
-    public void SaveSoundSettings()
+    public void  SaveSoundSettings()
     {
         PlayerPrefs.SetFloat(SoundEffectsPref, soundEffectsSlider.value);
     }
@@ -43,7 +43,7 @@ public class audiochange : MonoBehaviour
         // Assign Audio Source component to control it
         audioSrc = GetComponent<AudioSource>();
         firstPlayInt = PlayerPrefs.GetInt(FirstPlay);
-        if (firstPlayInt == 0)
+        if (!PlayerPrefs.HasKey(SoundEffectsPref))
         {
             soundEffectsFloat = .75f;
             if(soundEffectsSlider){
