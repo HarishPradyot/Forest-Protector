@@ -18,3 +18,11 @@ CS19B008 -<a href="https://github.com/roopasree123" target="_blank">Roopa Sree</
 ## Link
 Link For the game is :
 ## Contributions
+Team members | Contributions
+--- | --- 
+Harish (CS19B047) | Scripting, Player and weapon animations, Game UI, Spawner animation and scripting, Enemy movement, Player movement, Coin and Chest spawners, Collecting sprites 
+Githin George(CS19B046) | Collecting sprites, Tilemap for the main game, Player animations, Game UI, Sound effects, Scripting, Enemy and player movement, Spawner scripting
+Sahithi (CS19B011) | UI of the game, Sound effects, Player animations, Collecting sprites, Cut scenes, In-game dialogues, Pause menu and game over panels
+Gowtami (CS19B010) | Main menu, Player animations,Collecting sprites, Main menu controller, Cut Scene dialogues, Enemy spawner,Health bar, Options menu
+Roopa (CS19B008) | Main menu, Music background,Collecting sprites,Report, slides
+
