@@ -167,11 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee80bf9ce0a5949934d4651ca3208e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeSpeed: 1
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 0}
   minAccessRange: 1.5
-  longPressDuration: 4
+  longPressDuration: 1.5
   coinText: {fileID: 0}
   speed: 14
   angle: 0

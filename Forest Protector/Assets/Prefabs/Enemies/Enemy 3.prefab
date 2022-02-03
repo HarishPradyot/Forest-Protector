@@ -99,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 1781711265290305277}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 709497e5b3606cc4ab2d1569f4ec8729, type: 2}
+  m_Controller: {fileID: 9100000, guid: baac356642a9ccf4c80ed390f56607e4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -186,6 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172bb208ccd765f4e9152165ae6f2380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeSpeed: 1
+  currentHealth: 0
   Weapons:
   - {fileID: 4063055854226802343, guid: 8b0e935663581be488a2b8751d205462, type: 3}
   weaponMaxCount: 01000000

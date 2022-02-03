@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    private int NoOfPlays;
     [SerializeField]
     private float fadeSpeed = 1f;
     public int maxHealth=100;
     [SerializeField]
     public int currentHealth;
-    public HealthBar healthBar;
+    public Slider healthBar;
+
+    [SerializeField]
+    private TextMeshProUGUI health;
     private bool isPlayerDead;
     private Vector3 startPosition;
 
@@ -77,7 +83,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // healthBar.SetMaxHealth(maxHealth);
+        NoOfPlays=1;
+        
         spriteRenderer=GetComponent<SpriteRenderer>();
         playerBody=GetComponent<Rigidbody2D>();
         playerAnimator=GetComponent<Animator>();
@@ -91,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
         TRAP_TAG="Trap";
         GARBAGE_TAG="Garbage";
 
+        isPlayerDead=false;
         numberOfCoins=0;
         currentHealth=maxHealth;
         startPosition=transform.position;
@@ -109,6 +117,9 @@ public class PlayerMovement : MonoBehaviour
         smoothInputMagnitude = Mathf.Lerp(smoothInputMagnitude, inputMagnitude, speed * Time.deltaTime);
 
         velocity = inputDirection *  smoothInputMagnitude * speed;
+        
+
+    
     }
     void initializeWeaponIndexMap()
     {
@@ -226,6 +237,13 @@ public class PlayerMovement : MonoBehaviour
             if(boomerang.Damage && boomerang.getReturnTransform()!=transform)
             {
                 currentHealth-=boomerang.getDamage();
+                healthBar.value = (float)currentHealth/maxHealth;
+                if(currentHealth>=0){
+                    health.text = "Health : " + currentHealth.ToString();
+                }
+                else{
+                    health.text = "Health : 0";
+                }
                 if(currentHealth<=0 && !isPlayerDead)
                 {
                     isPlayerDead=true;
@@ -240,6 +258,13 @@ public class PlayerMovement : MonoBehaviour
             if(aircutter.Damage && aircutter.getLaunchTransform()!=transform)
             {
                 currentHealth-=aircutter.getDamage();
+                healthBar.value = (float)currentHealth/maxHealth;
+                if(currentHealth>=0){
+                    health.text = "Health : " + currentHealth.ToString();
+                }
+                else{
+                    health.text = "Health : 0";
+                }
                 if(currentHealth<=0 && !isPlayerDead)
                 {
                     isPlayerDead=true;
@@ -279,6 +304,22 @@ public class PlayerMovement : MonoBehaviour
             if(Time.time-startTime>=longPressDuration)
             {
                 weaponIndex=(weaponIndex+1)%Weapons.Length;
+            }
+            else
+                Debug.Log("Press Longer");
+        }
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            startTime=Time.time;
+            while(Time.time-startTime<=longPressDuration && Input.GetKey(KeyCode.E))
+                yield return null;
+            if(Time.time-startTime>=longPressDuration)
+            {
+                if(numberOfCoins>=10){
+                    numberOfCoins -=10;
+                    coinText.text ="Coins: " + numberOfCoins.ToString(); 
+                }
             }
             else
                 Debug.Log("Press Longer");
@@ -338,6 +379,12 @@ public class PlayerMovement : MonoBehaviour
                 DestroyImmediate(child);
         }
         transform.position=startPosition;
+        currentHealth=maxHealth;
+        healthBar.value=1;
+        health.text = "Health : " + maxHealth.ToString();
+        isPlayerDead=false;
+        NoOfPlays++;
+        Debug.Log("Respawn??");
         player.color = new Color(player.color.r, player.color.g, player.color.b, 1);
     }
     public void restoreWeaponCount(string weaponName)
