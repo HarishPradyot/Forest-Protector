@@ -9,16 +9,15 @@ public class EnemyAIMovement : MonoBehaviour
     // For PathFinder
     [SerializeField]
     private float pathUpdateSeconds=0.5f;
-    [SerializeField]
     private GameObject target;
     private bool reachedEndofPath;
 
 
     // Movement and Physics parameters
     [SerializeField]
-    private int speed=12, forceSpeed=100;
+    private int speed_Patrol=5, speed_Follow=12, forceSpeed=100;
     [SerializeField]
-    private float nextWaypointDistance=2f, maxDistanceFromPatrolSite=100f, angle;
+    private float nextWaypointDistance=2f, stopDistanceFromEnemy=5f, maxDistanceFromPatrolSite=100f, maxFollowDistance=100f, angle;
     private float distanceFollowed;
     
     // Additional References
@@ -57,8 +56,6 @@ public class EnemyAIMovement : MonoBehaviour
         seeker=GetComponent<Seeker>();
         enemyBody=GetComponent<Rigidbody2D>();
         enemyAnimator=GetComponent<Animator>();
-        targetTransform=target.GetComponent<Transform>();
-        targetMovement=target.GetComponent<PlayerMovement>();
         spawner=transform.parent.GetComponent<EnemyRegionalSpawner>();
 
         reachedEndofPath=false;
@@ -73,6 +70,8 @@ public class EnemyAIMovement : MonoBehaviour
         enemyCollider=GetComponent<CircleCollider2D>();
         offset=enemyCollider.radius*1.2f;
 
+        previousWayPointIndex=-1;
+        targetTransform=spawner.randomWayPoint(ref previousWayPointIndex);
         seeker.StartPath(enemyBody.position, targetTransform.position, OnGenerationComplete);
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
 
@@ -131,17 +130,23 @@ public class EnemyAIMovement : MonoBehaviour
     // For Follow State
     bool isTargetMoving()
     {
+        if(target==null)
+            return false;
         return targetMovement.Velocity.magnitude > 0.01f;
     }
     bool isTargetFarAway()
     {
-        return (targetMovement.Position-(Vector2)transform.position).magnitude > nextWaypointDistance;
+        if(target==null)
+            return false;
+        return (targetMovement.Position-(Vector2)transform.position).magnitude > stopDistanceFromEnemy;
+    }
+    bool followedForLong()
+    {
+        return distanceFollowed>maxFollowDistance;
     }
     bool farFromPatrolSite()
     {
-        return distanceFollowed>maxDistanceFromPatrolSite;
-        return false;
-        // && distance walked from patrol point is more than a value
+        return Vector2.Distance(enemyBody.position, spawner.wayPoint(previousWayPointIndex).position)>maxDistanceFromPatrolSite;
     }
     void setFollowMode(GameObject hitBody)
     {
@@ -158,7 +163,20 @@ public class EnemyAIMovement : MonoBehaviour
         {   
             if(isFollowing)
             {
-                if(!farFromPatrolSite() && (true || isTargetFarAway() || isTargetMoving()))    
+                if(isFollowing)
+                {
+                    if(!(isTargetFarAway() || isTargetMoving()))
+                    {    
+                        if(target!=null)
+                        {
+                            Debug.Log("Stopped before Player");
+                            return;
+                        }
+                        else
+                            setPatrolMode();
+                    }
+                }
+                if(!followedForLong())    
                     seeker.StartPath(enemyBody.position, targetTransform.position, OnGenerationComplete);
                 else
                     setPatrolMode();
@@ -183,7 +201,7 @@ public class EnemyAIMovement : MonoBehaviour
 
         Vector2 direction=((Vector2)path.vectorPath[currentWaypoint]-enemyBody.position).normalized;
         angle=Mathf.Atan2(direction.y, direction.x);
-        velocity=direction*speed;
+        velocity=direction*speed_Follow;
         force=direction*forceSpeed*Time.deltaTime;
 
         if(mode==1 && velocity.magnitude > 0.01f)
@@ -231,7 +249,7 @@ public class EnemyAIMovement : MonoBehaviour
 
         Vector2 direction=((Vector2)path.vectorPath[currentWaypoint]-enemyBody.position).normalized;
         angle=Mathf.Atan2(direction.y, direction.x);
-        velocity=direction*speed;
+        velocity=direction*speed_Patrol;
         force=direction*forceSpeed*Time.deltaTime;
 
         if(mode==1 && velocity.magnitude > 0.01f)
@@ -253,8 +271,6 @@ public class EnemyAIMovement : MonoBehaviour
     void FixedUpdate()
     {
         velocity=Vector2.zero;
-        if(isFollowing && isPatrolling)
-            Debug.Log("BOTH");
         if(isFollowing)
             followPath_FollowState();
         if(isPatrolling)

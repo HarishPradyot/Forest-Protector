@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Additional Attributes
     private float offset_a_d, offset_w_s, offset_diagonal;  // Offset values for raycast so that the ray originates outside player collider for horizontal, vertical and diagonal motion
-    private string WALK_PARAMETER, COIN_TAG, CHEST_TAG, BOOMERANG_TAG;
+    private string WALK_PARAMETER, COIN_TAG, CHEST_TAG, TRAP_TAG, BOOMERANG_TAG;
 
     // Collectables and Weapons
     private int points, maxPoint=4; // Coin Points
@@ -74,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         WALK_PARAMETER="Direction";
         COIN_TAG="Coin";
         CHEST_TAG="Chest";
+        TRAP_TAG="Trap";
         BOOMERANG_TAG="Boomerang";
 
         offset_a_d=playerCollider.size.x*transform.localScale.x/2;
@@ -150,7 +151,9 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.DrawLine(origin, visibleObject.point, Color.red);
             if(visibleObject.collider.CompareTag(CHEST_TAG))
-                StartCoroutine(canOpenChest(visibleObject.collider));
+                StartCoroutine(canOpenChestOrTrap(visibleObject.collider, CHEST_TAG));
+            else if(visibleObject.collider.CompareTag(TRAP_TAG))
+                StartCoroutine(canOpenChestOrTrap(visibleObject.collider, TRAP_TAG));
         }
         else
             Debug.DrawLine(origin, origin+direction*minAccessRange, Color.green);
@@ -183,7 +186,6 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log(collider.gameObject.name);
         if(collider.CompareTag(COIN_TAG))
         {
             points+=Random.Range(1, maxPoint+1);
@@ -193,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
             collider.GetComponent<GarbageAnimation>().destroy();
         }
     }
-    IEnumerator canOpenChest(Collider2D Chest)
+    IEnumerator canOpenChestOrTrap(Collider2D ChestOrTrap, string tag)
     {
         float startTime=-1f;
         if(Input.GetKeyDown(KeyCode.Z))
@@ -202,8 +204,12 @@ public class PlayerMovement : MonoBehaviour
             while(Time.time-startTime<=longPressDuration && Input.GetKey(KeyCode.Z))
                 yield return null;
             if(Time.time-startTime>=longPressDuration)
-                Chest.GetComponent<Chest>().openChest();
-                // Add Collision Check with Trap Layer
+            {
+                if(tag.Equals(CHEST_TAG))
+                    ChestOrTrap.GetComponent<Chest>().openChest();
+                else if(tag.Equals(TRAP_TAG))
+                    ChestOrTrap.GetComponent<TrapLever>().openTrap();
+            }   
             else
                 Debug.Log("Press Longer");
         }

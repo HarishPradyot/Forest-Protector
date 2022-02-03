@@ -13,7 +13,6 @@ public class TrapLever : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Long Presss Working");
         trapAnimator=GetComponent<Animator>();
         OPEN_TRAP="Base Layer.Trap Open";
         CLOSE_TRAP="Base Layer.Trap Close";
@@ -24,13 +23,13 @@ public class TrapLever : MonoBehaviour
     {
         
     }
-    public void openChest()
+    public void openTrap()
     {
         Debug.Log("Long Presss Working");
         trapAnimator.Play(OPEN_TRAP);
-        StartCoroutine(closeChest());
+        StartCoroutine(closeTrap());
     }
-    IEnumerator closeChest()
+    IEnumerator closeTrap()
     {
         float startTime=Time.time;
         while(Time.time-startTime<=waitDuration)

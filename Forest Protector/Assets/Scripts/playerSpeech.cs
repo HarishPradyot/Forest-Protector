@@ -26,7 +26,6 @@ public class playerSpeech : MonoBehaviour
         panelImg.SetActive(true);
         string x= "What should i keep here?";
         string y= "i should become better!";
-        Debug.Log(y.Length);
         textBox.text = "";
         for(int i=0;i<x.Length;i++){
             yield return new WaitForSeconds(0.1f);
