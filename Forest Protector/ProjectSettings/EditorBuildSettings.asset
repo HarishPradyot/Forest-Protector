@@ -5,12 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Main Game Sahithi.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Main Game.unity
-    guid: 2e7029ceb7825984ca3cd4ed4ac18742
+    path: Assets/Scenes/Main Menu.unity
+    guid: e0d01d0ed84ca344c8f674cd7bb8d987
   - enabled: 1
     path: Assets/Scenes/Cut Scene 1.unity
     guid: 5d975ae2d6eb7f4e5b9d2597fa6fc5c8
@@ -18,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Cut Scene 2.unity
     guid: eccde6b4978062240a08efbe76982e64
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: e0d01d0ed84ca344c8f674cd7bb8d987
-  - enabled: 1
-    path: Assets/Scenes/Main Game GT.unity
-    guid: e7b35e4582559ef80ae411f95b54582b
+    path: Assets/Scenes/Main Game.unity
+    guid: 2e7029ceb7825984ca3cd4ed4ac18742
   m_configObjects: {}

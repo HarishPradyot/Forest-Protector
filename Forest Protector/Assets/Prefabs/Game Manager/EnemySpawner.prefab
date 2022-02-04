@@ -50,6 +50,16 @@ MonoBehaviour:
   - {fileID: 1781711265290305277, guid: fbf07f6aff77870498e0e4ec6b92725e, type: 3}
   - {fileID: 1934676597070795552, guid: 82ebc69eedd19c9438b4633a95b7a913, type: 3}
   - {fileID: 2083573712428628183, guid: e2c485dd4e3eaf2468728e6e667c6795, type: 3}
+  chestPrefab: {fileID: 6410012673411080731, guid: 3aece4d7a8d239546bce2f9db9cc95ba, type: 3}
+  trapPrefab: {fileID: 1599886266704807990, guid: 5a775d1c2c10f9ac6be633d2e6e7b886, type: 3}
+  cageClose: {fileID: 3611507248508043899, guid: 54e943222a4168bb38dfe5ccec3bc90e, type: 3}
+  cageOpen: {fileID: 437127624988053974, guid: 99c4e688e195e5bc481d888a6986cccd, type: 3}
+  animalPrefabs:
+  - {fileID: 1599886266704807990, guid: f140bf8b19178419c8d73bf2cb601852, type: 3}
+  - {fileID: 1599886266704807990, guid: 706af28350aaff3519afeaf6a528008f, type: 3}
+  - {fileID: 1599886266704807990, guid: 8ab5b8d7e65de08cf964ad721839d2cc, type: 3}
   wayPoints: []
-  enemyLimit: 5
-  timeBetweenSpawn: 3
+  chestPoint: {fileID: 0}
+  trapPoint: {fileID: 0}
+  enemyLimit: 3
+  timeBetweenSpawn: 10
