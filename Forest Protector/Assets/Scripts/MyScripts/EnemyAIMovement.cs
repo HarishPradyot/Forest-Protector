@@ -129,7 +129,6 @@ public class EnemyAIMovement : MonoBehaviour
                 {    
                     if(target!=null)
                     {
-                        Debug.Log("Stopped before Player");
                         return;
                     }
                     else
@@ -226,6 +225,7 @@ public class EnemyAIMovement : MonoBehaviour
             Vector2 direction=getMovementDirection();
             Vector2 origin=enemyBody.position+direction*offset;
             GameObject weapon=Instantiate(Weapons[weaponIndex], origin, Quaternion.Euler(0, 0, angle*Mathf.Rad2Deg));
+            weapon.layer=LayerMask.NameToLayer("EnemyWeapon");
             GameManager.addToReleasedWeaponStash(weapon.transform);
             if(weapon.CompareTag(BOOMERANG_TAG))
             {

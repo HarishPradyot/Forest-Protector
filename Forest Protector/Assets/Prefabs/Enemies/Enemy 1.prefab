@@ -186,6 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172bb208ccd765f4e9152165ae6f2380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeSpeed: 1
+  currentHealth: 0
   Weapons:
   - {fileID: 4063055854226802343, guid: 8b0e935663581be488a2b8751d205462, type: 3}
   weaponMaxCount: 01000000

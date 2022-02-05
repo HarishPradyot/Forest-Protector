@@ -27,7 +27,8 @@ public class Chest : MonoBehaviour
             spawner.ChestOpen=true;
             return true;
         }
-        else{
+        else
+        {
             FindObjectOfType<playerSpeech>().startConversation(2);
             return false;
         }

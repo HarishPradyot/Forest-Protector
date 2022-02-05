@@ -28,7 +28,6 @@ public class playerSpeech : MonoBehaviour
         conversation.Add(new List<string>(){"I should ensure these campers are paying heed to cleanliness"});
         // conversation.Add(new List<string>(){"Why are you campers throwing garbage in public places","If we protect the nature, the nature will protect us","Keeping this environment clean is our responsibility"});
         // conversation.Add(new List<string>(){"Oh sorry we will not repeat this again","Good. Tell your friends as well","Protect nature and the LIFE ON EARTH"});
-        Debug.Log(conversation[0][0]);
         StartCoroutine(Speech(conversation[0]));
     }
 

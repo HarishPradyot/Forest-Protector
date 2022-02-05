@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 1895152537}
   - component: {fileID: 7766606094270708733}
   - component: {fileID: -4831052840269107688}
-  m_Layer: 6
+  - component: {fileID: 268442090}
+  - component: {fileID: 268442097}
+  m_Layer: 0
   m_Name: Wandering NPC 1
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -157,4 +159,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0301caf949e854b96da573207a57a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites: []
+  sprites:
+  - {fileID: 8742689608699433966, guid: b97565026eb91af4c9cd38b1d5e1390b, type: 3}
+  - {fileID: 4109525681575936692, guid: b7aab3683fe1b7a4da6addf9166d0bc7, type: 3}
+  - {fileID: 5376629591654736454, guid: 5dc1f4bbbf32aa440b9b046ad8409ec4, type: 3}
+  - {fileID: 3078497706085627347, guid: fd99f0ca0ed244a4ab4e1cfc146fe0ae, type: 3}
+  start: 5
+  end: 10
+--- !u!114 &268442090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781711265290305277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf4c2b026d1b2c489c603f087b22b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed_Wandering: 3
+  wayPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  nextWaypointDistance: 2
+  pathUpdateSeconds: 0.5
+  angle: 0
+--- !u!114 &268442097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781711265290305277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1

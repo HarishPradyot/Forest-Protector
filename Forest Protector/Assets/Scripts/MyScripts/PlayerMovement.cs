@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject[] Weapons;
     [SerializeField]
     private int[] weaponMaxCount;
+    private List<int> initialWeaponMaxCount;
     private int weaponIndex=1;
 
     public Vector2 Velocity
@@ -123,16 +124,17 @@ public class PlayerMovement : MonoBehaviour
         smoothInputMagnitude = Mathf.Lerp(smoothInputMagnitude, inputMagnitude, speed * Time.deltaTime);
 
         velocity = inputDirection *  smoothInputMagnitude * speed;
-        
-
-    
     }
     void initializeWeaponIndexMap()
     {
         Weapon_to_Index=new Dictionary<string, int>();
+        initialWeaponMaxCount=new List<int>();
         int index=0;
         foreach(GameObject weapon in Weapons)
             Weapon_to_Index.Add(weapon.tag, index++);
+
+        for(int i=0;i<weaponMaxCount.Length;i++)
+            initialWeaponMaxCount.Add(weaponMaxCount[i]);
     }
     void FixedUpdate()
     {
@@ -170,6 +172,7 @@ public class PlayerMovement : MonoBehaviour
             gameObject.GetComponent<AudioSource>().Play();
             Vector2 origin=playerBody.position+direction*offset;
             GameObject weapon=Instantiate(Weapons[weaponIndex], origin, Quaternion.Euler(0, 0, angle*Mathf.Rad2Deg));
+            weapon.layer=LayerMask.NameToLayer("PlayerWeapon");
             GameManager.addToReleasedWeaponStash(weapon.transform);
             if(weapon.CompareTag(BOOMERANG_TAG))
             {
@@ -272,13 +275,9 @@ public class PlayerMovement : MonoBehaviour
             if(aircutter.Damage && aircutter.getLaunchTransform()!=transform)
             {
                 currentHealth-=aircutter.getDamage();
+                currentHealth=Mathf.Clamp(currentHealth, 0, maxHealth);
                 healthBar.value = (float)currentHealth/maxHealth;
-                if(currentHealth>=0){
-                    health.text = "Health : " + currentHealth.ToString();
-                }
-                else{
-                    health.text = "Health : 0";
-                }
+                health.text = "Health : " + currentHealth.ToString();
                 if(currentHealth<=0 && !isPlayerDead)
                 {
                     isPlayerDead=true;
@@ -320,8 +319,6 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
             }   
-            else
-                Debug.Log("Press Longer");
         }
     }
     IEnumerator changeWeapon()
@@ -336,8 +333,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 weaponIndex=(weaponIndex+1)%Weapons.Length;
             }
-            else
-                Debug.Log("Press Longer");
         }
 
         if(Input.GetKeyDown(KeyCode.E))
@@ -355,44 +350,8 @@ public class PlayerMovement : MonoBehaviour
                     healthBar.value =(float)currentHealth/maxHealth; 
                 }
             }
-            else
-                Debug.Log("Press Longer");
         }
     }
-    /*
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("--------------------------"+collision.gameObject.name+"------------------------------"+collision.gameObject.tag);
-        if(collision.gameObject.CompareTag(BOOMERANG_TAG))
-        {
-            Boomerang boomerang=collision.gameObject.GetComponent<Boomerang>();
-            if(boomerang.Damage && boomerang.getReturnTransform()!=transform)
-            {
-                currentHealth-=boomerang.getDamage();
-                if(currentHealth<=0 && !isPlayerDead)
-                {
-                    isPlayerDead=true;
-                    playerDeath();
-                }
-            }
-            boomerang.Damage=false;
-        }
-        else if(collision.gameObject.CompareTag(AIRCUTTER_TAG))
-        {
-            AirCutter aircutter=collision.gameObject.GetComponent<AirCutter>();
-            if(aircutter.Damage && aircutter.getLaunchTransform()!=transform)
-            {
-                currentHealth-=aircutter.getDamage();
-                if(currentHealth<=0 && !isPlayerDead)
-                {
-                    isPlayerDead=true;
-                    playerDeath();
-                }
-            }
-            aircutter.Damage=false;
-        }
-    }
-    */
     void playerDeath()
     {
         StartCoroutine(resetPlayer());
@@ -418,7 +377,8 @@ public class PlayerMovement : MonoBehaviour
         health.text = "Health : " + maxHealth.ToString();
         isPlayerDead=false;
         NoOfPlays++;
-        Debug.Log("Respawn??");
+        for(int i=0;i<weaponMaxCount.Length;i++)
+            weaponMaxCount[i]=initialWeaponMaxCount[i];
         player.color = new Color(player.color.r, player.color.g, player.color.b, 1);
     }
     public void restoreWeaponCount(string weaponName)

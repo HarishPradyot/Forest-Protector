@@ -72,7 +72,8 @@ public class Boomerang : MonoBehaviour
             Destroy(gameObject); 
             return;
         }
-        else if((transform.position-returnTransform.position).magnitude < offset)
+
+        else if(Vector2.Distance(transform.position, returnTransform.position) < offset || transform.localPosition.magnitude < offset)
         {
             if(returnTransform.gameObject.CompareTag(ENEMY_TAG))
                 returnTransform.GetComponent<EnemyAIMovement>().restoreWeaponCount(gameObject.tag);

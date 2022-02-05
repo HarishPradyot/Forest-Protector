@@ -23,10 +23,8 @@ public class GarbageSpawner : MonoBehaviour
         while(true){
             float x = Random.Range(start,end);
             yield return(new WaitForSeconds(x));
-            if(spawn==null){
-                Debug.Log("Was Destroyed");
+            if(spawn==null)
                 spawned = false;
-            }
             if(!spawned){
                 spawned = true;
                 yield return(new WaitForSeconds(x));
